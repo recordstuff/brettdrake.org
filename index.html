@@ -3,24 +3,24 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Brett Drake | Senior C#/.NET Software Developer Seeking Roles</title>
-  <meta name="description" content="Brett Drake is a senior C#/.NET software developer with experience in .NET Framework, .NET Core, .NET 8, ASP.NET, MVC, Web API, Entity Framework, SQL Server, Azure, Blazor, MAUI, Docker, Kubernetes, React, TypeScript, and full-stack software engineering.">
+  <title>Brett Drake | C#/.NET Software Developer Seeking Roles</title>
+  <meta name="description" content="Brett Drake is an experienced C#/.NET software developer with work in .NET Framework, .NET Core, .NET 8, ASP.NET, MVC, Web API, Entity Framework, SQL Server, Azure, Blazor, MAUI, Docker, Kubernetes, React, TypeScript, and full-stack software engineering.">
   <meta name="author" content="Brett Drake">
   <meta name="robots" content="index, follow, max-image-preview:large">
-  <meta name="keywords" content="Brett Drake, senior C# developer, .NET developer, C Sharp developer, ASP.NET developer, .NET Core developer, .NET 8 developer, Entity Framework, SQL Server, Azure developer, Blazor developer, MAUI developer, Web API developer, full stack developer, React developer, TypeScript developer, software engineering candidate">
+  <meta name="keywords" content="Brett Drake, C# developer, .NET developer, C Sharp developer, ASP.NET developer, .NET Core developer, .NET 8 developer, Entity Framework, SQL Server, Azure developer, Blazor developer, MAUI developer, Web API developer, full stack developer, React developer, TypeScript developer, software engineering candidate">
   <link rel="canonical" href="https://brettdrake.org/">
   <link rel="icon" href="/favicon.ico" type="image/x-icon" sizes="16x16">
   <meta property="og:site_name" content="Brett Drake">
   <meta property="og:type" content="profile">
-  <meta property="og:title" content="Brett Drake | Senior C#/.NET Software Developer Seeking Roles">
-  <meta property="og:description" content="Portfolio for Brett Drake, a senior C#/.NET developer with ASP.NET, Web API, Entity Framework, SQL Server, Azure, Blazor, Docker, Kubernetes, React, and TypeScript experience.">
+  <meta property="og:title" content="Brett Drake | C#/.NET Software Developer Seeking Roles">
+  <meta property="og:description" content="Portfolio for Brett Drake, an experienced C#/.NET developer with ASP.NET, Web API, Entity Framework, SQL Server, Azure, Blazor, Docker, Kubernetes, React, and TypeScript experience.">
   <meta property="og:url" content="https://brettdrake.org/">
   <meta property="og:image" content="https://brettdrake.org/brett.jpg">
   <meta property="profile:first_name" content="Brett">
   <meta property="profile:last_name" content="Drake">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Brett Drake | Senior C#/.NET Software Developer Seeking Roles">
-  <meta name="twitter:description" content="Senior C#/.NET developer portfolio with ASP.NET, Web API, Entity Framework, SQL Server, Azure, Blazor, Docker, Kubernetes, React, and TypeScript experience.">
+  <meta name="twitter:title" content="Brett Drake | C#/.NET Software Developer Seeking Roles">
+  <meta name="twitter:description" content="C#/.NET developer portfolio with ASP.NET, Web API, Entity Framework, SQL Server, Azure, Blazor, Docker, Kubernetes, React, and TypeScript experience.">
   <meta name="twitter:image" content="https://brettdrake.org/brett.jpg">
   <script type="application/ld+json">
     {
@@ -30,8 +30,8 @@
       "name": "Brett Drake",
       "url": "https://brettdrake.org/",
       "image": "https://brettdrake.org/brett.jpg",
-      "jobTitle": "Senior C#/.NET Software Developer",
-      "description": "Senior C#/.NET software developer seeking software engineering opportunities. Experience includes .NET Framework, .NET Core, .NET 8, ASP.NET, MVC, Web API, Entity Framework, SQL Server, Azure, Blazor, MAUI, Docker, Kubernetes, React, TypeScript, and full-stack development.",
+      "jobTitle": "C#/.NET Software Developer",
+      "description": "Experienced C#/.NET software developer seeking software engineering opportunities. Experience includes .NET Framework, .NET Core, .NET 8, ASP.NET, MVC, Web API, Entity Framework, SQL Server, Azure, Blazor, MAUI, Docker, Kubernetes, React, TypeScript, and full-stack development.",
       "sameAs": [
         "https://github.com/recordstuff",
         "https://nextjs.brettdrake.org/",
@@ -73,18 +73,20 @@
   <style>
     :root {
       --ink: #f4f6ff;
-      --muted: #a7adbd;
-      --paper: #0d0f14;
-      --panel: #171a22;
+      --muted: #9ccca8;
+      --paper: #020503;
+      --panel: #07110b;
       --panel-light: #f8f6f2;
-      --line: #303544;
+      --line: #174421;
       --blue: #1949fc;
       --orange: #8f2f0c;
       --periwinkle: #5769e0;
       --yellow: #ebb416;
       --terminal-green: #00ff00;
+      --matrix-green: #39ff74;
+      --matrix-dim: #0a5e24;
       --hot-orange: #5c1d08;
-      --shadow: 0 24px 72px rgba(0, 0, 0, .38);
+      --shadow: 0 24px 72px rgba(0, 0, 0, .58);
       --display-font: "Bricolage Grotesque", "Public Sans", ui-sans-serif, system-ui, sans-serif;
       --body-font: "Public Sans", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     }
@@ -98,13 +100,58 @@
       min-height: 100vh;
       color: var(--ink);
       background:
-        linear-gradient(135deg, rgba(0, 255, 0, .2), transparent 34%),
-        linear-gradient(315deg, rgba(0, 255, 0, .1), transparent 38%),
+        radial-gradient(circle at 18% 8%, rgba(0, 255, 84, .22), transparent 26%),
+        radial-gradient(circle at 84% 12%, rgba(235, 180, 22, .11), transparent 22%),
+        linear-gradient(135deg, rgba(0, 255, 0, .16), transparent 34%),
+        linear-gradient(315deg, rgba(0, 255, 0, .09), transparent 38%),
         linear-gradient(180deg, #000000, var(--paper) 46%),
         var(--paper);
       font-family: var(--body-font);
       line-height: 1.5;
       font-weight: 400;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    body::before,
+    body::after {
+      content: "";
+      position: fixed;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    body::before {
+      inset: 0;
+      background:
+        repeating-linear-gradient(180deg, rgba(57, 255, 116, .055) 0 1px, transparent 1px 4px),
+        linear-gradient(90deg, rgba(0, 255, 0, .05) 1px, transparent 1px);
+      background-size: auto, 54px 54px;
+      mix-blend-mode: screen;
+    }
+
+    body::after {
+      content: "01001011 00111110 10110100 01101110 11100101 00010110 01011100 10101001 00101101 11001010 01001011 00111110 10110100 01101110 11100101 00010110 01011100 10101001 00101101 11001010";
+      inset: -18% -8% auto -8%;
+      color: rgba(57, 255, 116, .11);
+      font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+      font-size: .82rem;
+      line-height: 2.1;
+      letter-spacing: .22em;
+      overflow-wrap: anywhere;
+      text-shadow: 0 0 12px rgba(57, 255, 116, .3);
+      transform: rotate(-7deg);
+      animation: matrix-drift 28s linear infinite;
+    }
+
+    @keyframes matrix-drift {
+      0% {
+        translate: 0 -10%;
+      }
+
+      100% {
+        translate: 0 68%;
+      }
     }
 
     a {
@@ -115,6 +162,8 @@
       width: min(1120px, calc(100% - 36px));
       margin: 0 auto;
       padding: 34px 0 48px;
+      position: relative;
+      z-index: 1;
     }
 
     .sr-only {
@@ -193,9 +242,11 @@
       grid-template-columns: minmax(0, 1.1fr) minmax(320px, .9fr);
       min-height: 560px;
       overflow: hidden;
-      border: 1px solid rgba(23, 32, 42, .12);
+      border: 1px solid rgba(57, 255, 116, .28);
       border-radius: 8px;
-      background: linear-gradient(135deg, #191d27, #11141b);
+      background:
+        linear-gradient(135deg, rgba(7, 17, 11, .95), rgba(3, 9, 5, .96)),
+        radial-gradient(circle at top left, rgba(57, 255, 116, .2), transparent 42%);
       box-shadow: var(--shadow);
     }
 
@@ -248,6 +299,7 @@
       line-height: 1;
       letter-spacing: 0;
       font-weight: 700;
+      text-shadow: 0 0 24px rgba(57, 255, 116, .28);
     }
 
     .lead {
@@ -298,6 +350,28 @@
       box-shadow: 0 12px 28px rgba(0, 255, 0, .18);
     }
 
+    .github-button {
+      color: #24292f;
+      border-color: #d0d7de;
+      background: #f6f8fa;
+      box-shadow: 0 10px 24px rgba(1, 4, 9, .24);
+    }
+
+    .github-button .link-icon {
+      background: #24292f;
+      color: #ffffff;
+    }
+
+    .github-button:hover,
+    .github-button:active {
+      color: #24292f;
+      border-color: #8c959f;
+      background: #ffffff;
+      box-shadow:
+        0 12px 28px rgba(1, 4, 9, .3),
+        0 0 20px rgba(57, 255, 116, .18);
+    }
+
     .button.secondary {
       color: var(--ink);
       border: 1px solid rgba(255, 255, 255, .18);
@@ -320,8 +394,8 @@
       min-height: 440px;
       overflow: hidden;
       background:
-        repeating-linear-gradient(135deg, rgba(255, 255, 255, .08) 0 1px, transparent 1px 22px),
-        linear-gradient(135deg, #000000, #0f2d15 54%, var(--terminal-green));
+        repeating-linear-gradient(135deg, rgba(57, 255, 116, .13) 0 1px, transparent 1px 22px),
+        linear-gradient(135deg, #000000, #06180b 54%, var(--matrix-dim));
       color: white;
       isolation: isolate;
     }
@@ -349,10 +423,12 @@
       top: 50%;
       left: 0;
       width: min(500px, 78%);
-      border: 1px solid rgba(255, 255, 255, .18);
+      border: 1px solid rgba(57, 255, 116, .38);
       border-radius: 8px;
-      background: rgba(9, 22, 31, .62);
-      box-shadow: 0 18px 44px rgba(0, 0, 0, .28);
+      background: rgba(1, 8, 4, .74);
+      box-shadow:
+        0 18px 44px rgba(0, 0, 0, .36),
+        0 0 34px rgba(57, 255, 116, .16);
       backdrop-filter: blur(12px);
       animation: terminal-pong 30s linear infinite;
       will-change: left, top, transform;
@@ -423,6 +499,8 @@
       padding: 18px;
       font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
       font-size: .94rem;
+      color: rgba(229, 255, 233, .9);
+      text-shadow: 0 0 9px rgba(57, 255, 116, .36);
     }
 
     .line {
@@ -478,10 +556,13 @@
     }
 
     .panel {
-      border: 1px solid rgba(255, 255, 255, .12);
+      border: 1px solid rgba(57, 255, 116, .18);
       border-radius: 8px;
-      background: rgba(23, 26, 34, .88);
-      box-shadow: 0 18px 46px rgba(0, 0, 0, .28);
+      background:
+        linear-gradient(180deg, rgba(7, 17, 11, .9), rgba(4, 9, 6, .88));
+      box-shadow:
+        0 18px 46px rgba(0, 0, 0, .34),
+        inset 0 1px 0 rgba(57, 255, 116, .11);
     }
 
     .panel-inner {
@@ -603,6 +684,21 @@
       color: #ffe28b;
     }
 
+    .hosting-story {
+      margin-top: 22px;
+    }
+
+    .hosting-copy {
+      display: grid;
+      gap: 12px;
+      max-width: 940px;
+      color: var(--muted);
+    }
+
+    .hosting-copy p {
+      margin: 0;
+    }
+
     footer {
       display: flex;
       justify-content: space-between;
@@ -611,6 +707,21 @@
       margin-top: 28px;
       color: var(--muted);
       font-size: .95rem;
+    }
+
+    .site-mark {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+      color: var(--muted);
+    }
+
+    .copyright-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      color: var(--muted);
     }
 
     @media (max-width: 860px) {
@@ -676,6 +787,10 @@
     }
 
     @media (prefers-reduced-motion: reduce) {
+      body::after {
+        animation: none;
+      }
+
       .terminal {
         animation: none;
         left: 50%;
@@ -696,7 +811,7 @@
           </svg>
           My React NextJS Sample Site
         </a>
-        <a class="pill" href="https://github.com/recordstuff">
+        <a class="pill github-button" href="https://github.com/recordstuff">
           <svg class="link-icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
             <path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82A7.65 7.65 0 0 1 8 3.86c.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"></path>
           </svg>
@@ -714,7 +829,7 @@
     <section class="hero">
       <div class="hero-copy">
         <img class="profile-photo" src="brett.jpg" alt="Brett Drake">
-        <h1>Brett Drake, Senior C#/.NET Software Developer</h1>
+        <h1>Brett Drake, C#/.NET Software Developer</h1>
         <p class="lead">
           Experienced across .NET Framework, .NET Core, ASP.NET, Web API,
           Entity Framework, SQL Server, Azure, Blazor, Docker, Kubernetes,
@@ -728,7 +843,7 @@
             </svg>
             My React NextJS Sample Site
           </a>
-          <a class="button secondary" href="https://github.com/recordstuff">
+          <a class="button secondary github-button" href="https://github.com/recordstuff">
             <svg class="link-icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
               <path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82A7.65 7.65 0 0 1 8 3.86c.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"></path>
             </svg>
@@ -840,10 +955,38 @@
       </div>
     </section>
 
+    <section class="panel hosting-story" aria-labelledby="hosting-title">
+      <div class="panel-inner">
+        <h2 id="hosting-title">How Is This Site Hosted?</h2>
+        <div class="hosting-copy">
+          <p>
+            Apache is the reverse proxy server, and the API is reused across
+            the frontend subdomains. Apache routes each subdomain to the right
+            Docker container based on that container's exposed port.
+          </p>
+          <p>
+            It is running on an older eight-core computer with 32 GB of RAM.
+            Its fancy hardware aged out of Windows 11 support, but that
+            ancient-but-powerful setup is perfect for Linux. The machine
+            comfortably runs Apache and Docker Desktop for Linux.
+          </p>
+          <p>
+            Paired with LFT Fiber, my city's lightning-fast internet, it is the
+            solution of my dreams: a super-fast site with more power and more
+            room to grow than a free cloud tier, while I only pay about $20 a
+            year to Squarespace and another $5 a month for a static IP.
+          </p>
+        </div>
+      </div>
+    </section>
+
     <footer>
-      <span>brettdrake.org</span>
-      <span>Brett Drake, Senior C#/.NET Software Developer</span>
+      <span class="site-mark">brettdrake.org <span class="copyright-badge">© <span id="copyright-year"></span></span></span>
+      <span>Brett Drake, C#/.NET Software Developer</span>
     </footer>
   </main>
+  <script>
+    document.getElementById("copyright-year").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
