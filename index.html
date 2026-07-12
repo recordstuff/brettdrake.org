@@ -86,6 +86,10 @@
       --matrix-green: #39ff74;
       --matrix-dim: #0a5e24;
       --matrix-gold: #ebb416;
+      --link-text: #9dffb4;
+      --link-underbar: rgba(57, 255, 116, .9);
+      --link-underbar-soft: rgba(0, 255, 0, .2);
+      --progress: #00d9ff;
       --hot-orange: #5c1d08;
       --shadow: 0 24px 72px rgba(0, 0, 0, .58);
       --display-font: "Bricolage Grotesque", "Public Sans", ui-sans-serif, system-ui, sans-serif;
@@ -384,6 +388,39 @@
         inset 0 1px 0 rgba(57, 255, 116, .12);
     }
 
+    .resume-button {
+      color: var(--link-text);
+      border-color: rgba(57, 255, 116, .72);
+      background:
+        linear-gradient(135deg, rgba(7, 17, 11, .98), rgba(1, 8, 4, .98)),
+        linear-gradient(90deg, rgba(57, 255, 116, .14), rgba(235, 180, 22, .08));
+      box-shadow:
+        0 14px 32px rgba(0, 0, 0, .34),
+        0 0 22px rgba(57, 255, 116, .2),
+        inset 0 1px 0 rgba(57, 255, 116, .24);
+    }
+
+    .resume-button .link-icon {
+      background: rgba(57, 255, 116, .14);
+      color: var(--terminal-green);
+      border: 1px solid rgba(57, 255, 116, .42);
+    }
+
+    .pill.resume-button:hover,
+    .pill.resume-button:active,
+    .button.resume-button:hover,
+    .button.resume-button:active {
+      color: var(--terminal-green);
+      border-color: var(--terminal-green);
+      background:
+        linear-gradient(135deg, rgba(9, 31, 15, .98), rgba(1, 12, 5, .98)),
+        linear-gradient(90deg, rgba(57, 255, 116, .2), rgba(235, 180, 22, .1));
+      box-shadow:
+        0 16px 34px rgba(0, 0, 0, .38),
+        0 0 28px rgba(57, 255, 116, .34),
+        inset 0 1px 0 rgba(57, 255, 116, .34);
+    }
+
     .button.secondary {
       color: var(--ink);
       border: 1px solid rgba(255, 255, 255, .18);
@@ -547,32 +584,27 @@
 
     .line span:last-child {
       flex: 0 0 auto;
-    }
-
-    .terminal-link {
-      color: inherit;
-      text-decoration: none;
-      border-bottom: 1px solid rgba(0, 255, 0, .42);
-      transition: color .2s ease, border-color .2s ease;
-    }
-
-    .terminal-link:hover {
-      color: var(--terminal-green);
-      border-color: var(--terminal-green);
+      color: #ffd4ec;
+      font-weight: 800;
+      text-shadow: 0 0 10px rgba(255, 150, 210, .22);
     }
 
     .line:last-child {
       border-bottom: 0;
     }
 
-    .done {
-      color: #ffe071;
-      font-weight: 800;
+    .line span.done {
+      color: #ffe28b;
+      text-shadow: 0 0 10px rgba(235, 180, 22, .24);
     }
 
-    .next {
-      color: #ffbc8a;
-      font-weight: 800;
+    .line span.next {
+      color: var(--progress);
+      text-shadow: 0 0 10px rgba(0, 217, 255, .28);
+    }
+
+    .terminal .next {
+      text-shadow: 0 0 10px rgba(0, 217, 255, .28);
     }
 
     .sections {
@@ -635,13 +667,17 @@
     }
 
     .status.ready {
-      border-color: rgba(25, 73, 252, .48);
-      background: linear-gradient(180deg, rgba(25, 73, 252, .22), rgba(255, 255, 255, .06));
+      border-color: rgba(0, 217, 255, .44);
+      border-left: 3px solid var(--progress);
+      background: rgba(0, 217, 255, .075);
+      box-shadow:
+        inset 0 1px 0 rgba(0, 217, 255, .12),
+        0 0 18px rgba(0, 217, 255, .12);
     }
 
     .status.ready span,
     .status.ready strong {
-      color: var(--ink);
+      color: #d9fbff;
     }
 
     .ports {
@@ -670,7 +706,9 @@
 
     .port-name {
       min-width: 0;
+      color: var(--link-text);
       font-weight: 800;
+      text-shadow: 0 0 12px rgba(57, 255, 116, .34);
     }
 
     .port-target {
@@ -682,23 +720,39 @@
       font-size: .94rem;
     }
 
-    a.port-target {
+    a:not(.pill):not(.button) {
+      display: inline-block;
       width: fit-content;
       max-width: 100%;
-      border-bottom: 1px solid rgba(0, 255, 0, .32);
-      transition: color .2s ease, border-color .2s ease;
+      color: var(--link-text);
+      text-decoration: none;
+      padding-bottom: 3px;
+      background:
+        linear-gradient(90deg, var(--terminal-green), var(--link-underbar)) 0 100% / 100% 3px no-repeat,
+        linear-gradient(90deg, var(--link-underbar-soft), transparent) 0 100% / 100% 8px no-repeat;
+      text-shadow: 0 0 10px rgba(57, 255, 116, .18);
+      transition: color .2s ease, background-size .2s ease, text-shadow .2s ease;
     }
 
-    a.port-target:hover {
+    a:not(.pill):not(.button):hover {
       color: var(--terminal-green);
-      border-color: var(--terminal-green);
+      background-size: 100% 5px, 100% 11px;
+      text-shadow:
+        0 0 10px rgba(57, 255, 116, .45),
+        0 0 18px rgba(0, 255, 0, .22);
+    }
+
+    a:not(.pill):not(.button):focus-visible {
+      outline: 2px solid var(--terminal-green);
+      outline-offset: 4px;
     }
 
     .tag {
       padding: 6px 9px;
+      border: 1px solid rgba(255, 150, 210, .24);
       border-radius: 999px;
-      background: rgba(87, 105, 224, .18);
-      color: #ccd4ff;
+      background: rgba(255, 150, 210, .13);
+      color: #ffd4ec;
       font-size: .78rem;
       font-weight: 900;
       text-transform: uppercase;
@@ -710,6 +764,13 @@
     .tag.complete {
       background: rgba(235, 180, 22, .23);
       color: #ffe28b;
+    }
+
+    .tag.progress {
+      background: rgba(0, 217, 255, .16);
+      border: 1px solid rgba(0, 217, 255, .36);
+      color: var(--progress);
+      box-shadow: 0 0 14px rgba(0, 217, 255, .12);
     }
 
     .hosting-story {
@@ -845,9 +906,9 @@
           </svg>
           My GitHub
         </a>
-        <a class="pill resume-nav-button" href="https://brettdrake.org/brett-drake-resume.pdf">
+        <a class="pill resume-button resume-nav-button" href="https://brettdrake.org/brett-drake-resume.pdf">
           <svg class="link-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-            <path fill="currentColor" d="M6 2h8l4 4v16H6V2Zm7 1.8V7h3.2L13 3.8ZM8 11h8V9.5H8V11Zm0 4h8v-1.5H8V15Zm0 4h5v-1.5H8V19Z"></path>
+            <path fill="currentColor" d="M6 2h8l4 4v7h-2V8h-4V4H8v16h4v2H6V2Zm8 2.8V6h1.2L14 4.8ZM9 11h6V9.5H9V11Zm0 4h5v-1.5H9V15Zm9-1h2v4.2l1.6-1.6L23 18l-4 4-4-4 1.4-1.4 1.6 1.6V14Zm-4 8v-2h10v2H14Z"></path>
           </svg>
           My Résumé
         </a>
@@ -877,9 +938,9 @@
             </svg>
             My GitHub
           </a>
-          <a class="button secondary" href="https://brettdrake.org/brett-drake-resume.pdf">
+          <a class="button resume-button" href="https://brettdrake.org/brett-drake-resume.pdf">
             <svg class="link-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-              <path fill="currentColor" d="M6 2h8l4 4v16H6V2Zm7 1.8V7h3.2L13 3.8ZM8 11h8V9.5H8V11Zm0 4h8v-1.5H8V15Zm0 4h5v-1.5H8V19Z"></path>
+              <path fill="currentColor" d="M6 2h8l4 4v7h-2V8h-4V4H8v16h4v2H6V2Zm8 2.8V6h1.2L14 4.8ZM9 11h6V9.5H9V11Zm0 4h5v-1.5H9V15Zm9-1h2v4.2l1.6-1.6L23 18l-4 4-4-4 1.4-1.4 1.6 1.6V14Zm-4 8v-2h10v2H14Z"></path>
             </svg>
             My Résumé
           </a>
@@ -958,7 +1019,7 @@
               <span class="port-number">3003</span>
               <span class="port-name">SolidJS</span>
               <a class="port-target" href="https://solidjs.brettdrake.org/">solidjs.brettdrake.org</a>
-              <span class="tag complete">In progress</span>
+              <span class="tag progress">In progress</span>
             </div>
             <div class="port">
               <span class="port-number">3004</span>
