@@ -85,6 +85,7 @@
       --terminal-green: #00ff00;
       --matrix-green: #39ff74;
       --matrix-dim: #0a5e24;
+      --matrix-gold: #ebb416;
       --hot-orange: #5c1d08;
       --shadow: 0 24px 72px rgba(0, 0, 0, .58);
       --display-font: "Bricolage Grotesque", "Public Sans", ui-sans-serif, system-ui, sans-serif;
@@ -125,8 +126,9 @@
       inset: 0;
       background:
         repeating-linear-gradient(180deg, rgba(57, 255, 116, .055) 0 1px, transparent 1px 4px),
+        repeating-linear-gradient(135deg, transparent 0 34px, rgba(235, 180, 22, .1) 34px 35px, transparent 35px 70px),
         linear-gradient(90deg, rgba(0, 255, 0, .05) 1px, transparent 1px);
-      background-size: auto, 54px 54px;
+      background-size: auto, 140px 140px, 54px 54px;
       mix-blend-mode: screen;
     }
 
@@ -139,7 +141,9 @@
       line-height: 2.1;
       letter-spacing: .22em;
       overflow-wrap: anywhere;
-      text-shadow: 0 0 12px rgba(57, 255, 116, .3);
+      text-shadow:
+        0 0 12px rgba(57, 255, 116, .3),
+        0 0 22px rgba(235, 180, 22, .16);
       transform: rotate(-7deg);
       animation: matrix-drift 28s linear infinite;
     }
@@ -372,10 +376,34 @@
         0 0 20px rgba(57, 255, 116, .18);
     }
 
+    .pill.resume-nav-button {
+      border-color: rgba(57, 255, 116, .28);
+      background: #07110b;
+      box-shadow:
+        0 10px 24px rgba(0, 0, 0, .3),
+        inset 0 1px 0 rgba(57, 255, 116, .12);
+    }
+
     .button.secondary {
       color: var(--ink);
       border: 1px solid rgba(255, 255, 255, .18);
       background: rgba(255, 255, 255, .09);
+    }
+
+    .button.secondary.github-button {
+      color: #24292f;
+      border-color: #d0d7de;
+      background: #f6f8fa;
+    }
+
+    .button.secondary.github-button:hover,
+    .button.secondary.github-button:active {
+      color: #24292f;
+      border-color: #8c959f;
+      background: #ffffff;
+      box-shadow:
+        0 12px 28px rgba(1, 4, 9, .3),
+        0 0 20px rgba(57, 255, 116, .18);
     }
 
     .button:hover {
@@ -817,7 +845,7 @@
           </svg>
           My GitHub
         </a>
-        <a class="pill" href="https://brettdrake.org/brett-drake-resume.pdf">
+        <a class="pill resume-nav-button" href="https://brettdrake.org/brett-drake-resume.pdf">
           <svg class="link-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
             <path fill="currentColor" d="M6 2h8l4 4v16H6V2Zm7 1.8V7h3.2L13 3.8ZM8 11h8V9.5H8V11Zm0 4h8v-1.5H8V15Zm0 4h5v-1.5H8V19Z"></path>
           </svg>
@@ -981,7 +1009,7 @@
     </section>
 
     <footer>
-      <span class="site-mark">brettdrake.org <span class="copyright-badge">© <span id="copyright-year"></span></span></span>
+      <span class="site-mark">brettdrake.org <span class="copyright-badge"><span id="copyright-year"></span></span></span>
       <span>Brett Drake, C#/.NET Software Developer</span>
     </footer>
   </main>
