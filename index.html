@@ -90,6 +90,10 @@
       --link-underbar: rgba(57, 255, 116, .9);
       --link-underbar-soft: rgba(0, 255, 0, .2);
       --progress: #00d9ff;
+      --microsoft-blue: #0067b8;
+      --microsoft-blue-dark: #005a9e;
+      --dotnet-purple: #512bd4;
+      --dotnet-purple-deep: #3c1f9f;
       --hot-orange: #5c1d08;
       --shadow: 0 24px 72px rgba(0, 0, 0, .58);
       --display-font: "Bricolage Grotesque", "Public Sans", ui-sans-serif, system-ui, sans-serif;
@@ -378,6 +382,33 @@
       box-shadow:
         0 12px 28px rgba(1, 4, 9, .3),
         0 0 20px rgba(57, 255, 116, .18);
+    }
+
+    .dotnet-button {
+      color: #ffffff;
+      border-color: rgba(255, 255, 255, .18);
+      background: linear-gradient(135deg, var(--microsoft-blue), var(--dotnet-purple));
+      box-shadow:
+        0 12px 28px rgba(0, 103, 184, .28),
+        0 0 18px rgba(81, 43, 212, .22);
+    }
+
+    .dotnet-button .link-icon {
+      background: #ffffff;
+      color: var(--dotnet-purple);
+      border: 1px solid rgba(255, 255, 255, .62);
+    }
+
+    .pill.dotnet-button:hover,
+    .pill.dotnet-button:active,
+    .button.dotnet-button:hover,
+    .button.dotnet-button:active {
+      color: #ffffff;
+      border-color: var(--terminal-green);
+      background: linear-gradient(135deg, var(--microsoft-blue-dark), var(--dotnet-purple-deep));
+      box-shadow:
+        0 12px 28px rgba(0, 255, 0, .2),
+        0 0 24px rgba(57, 255, 116, .28);
     }
 
     .pill.resume-nav-button {
@@ -893,6 +924,12 @@
   <main class="page">
     <nav class="nav" aria-label="Primary">
       <div class="nav-links">
+        <a class="pill dotnet-button" href="https://brettdrake.org:8080/swagger">
+          <svg class="link-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path fill="currentColor" d="M24 8.77h-2.468v7.565h-1.425V8.77h-2.462V7.53H24zm-6.852 7.565h-4.821V7.53h4.63v1.24h-3.205v2.494h2.953v1.234h-2.953v2.604h3.396zm-6.708 0H8.882L4.78 9.863a2.896 2.896 0 0 1-.258-.51h-.036c.032.189.048.592.048 1.21v5.772H3.157V7.53h1.659l3.965 6.32c.167.261.275.442.323.54h.024c-.04-.233-.06-.629-.06-1.185V7.529h1.372zm-8.703-.693a.868.829 0 0 1-.869.829.868.829 0 0 1-.868-.83.868.829 0 0 1 .868-.828.868.829 0 0 1 .869.829Z"></path>
+          </svg>
+          .NET API Backend
+        </a>
         <a class="pill primary" href="https://nextjs.brettdrake.org/">
           <svg class="link-icon nextjs-icon" viewBox="0 0 394 80" aria-hidden="true" focusable="false">
             <path fill="currentColor" d="M262 0h68.5v12.7h-27.2v66.6h-13.6V12.7H262V0ZM149 0v12.7H94v20.4h44.3v12.6H94v21h55v12.6H80.5V0h68.7zm34.3 0h-17.8l63.8 79.4h17.9l-32-39.7 32-39.6h-17.9l-23 28.6-23-28.6zm18.3 56.7-9-11-27.1 33.7h17.8l18.3-22.7z"></path>
@@ -925,6 +962,12 @@
           React, TypeScript, and practical full-stack delivery.
         </p>
         <div class="actions">
+          <a class="button dotnet-button" href="https://brettdrake.org:8080/swagger">
+            <svg class="link-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path fill="currentColor" d="M24 8.77h-2.468v7.565h-1.425V8.77h-2.462V7.53H24zm-6.852 7.565h-4.821V7.53h4.63v1.24h-3.205v2.494h2.953v1.234h-2.953v2.604h3.396zm-6.708 0H8.882L4.78 9.863a2.896 2.896 0 0 1-.258-.51h-.036c.032.189.048.592.048 1.21v5.772H3.157V7.53h1.659l3.965 6.32c.167.261.275.442.323.54h.024c-.04-.233-.06-.629-.06-1.185V7.529h1.372zm-8.703-.693a.868.829 0 0 1-.869.829.868.829 0 0 1-.868-.83.868.829 0 0 1 .868-.828.868.829 0 0 1 .869.829Z"></path>
+            </svg>
+            .NET API Backend
+          </a>
           <a class="button primary" href="https://nextjs.brettdrake.org/">
             <svg class="link-icon nextjs-icon" viewBox="0 0 394 80" aria-hidden="true" focusable="false">
               <path fill="currentColor" d="M262 0h68.5v12.7h-27.2v66.6h-13.6V12.7H262V0ZM149 0v12.7H94v20.4h44.3v12.6H94v21h55v12.6H80.5V0h68.7zm34.3 0h-17.8l63.8 79.4h17.9l-32-39.7 32-39.6h-17.9l-23 28.6-23-28.6zm18.3 56.7-9-11-27.1 33.7h17.8l18.3-22.7z"></path>
