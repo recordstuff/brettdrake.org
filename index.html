@@ -90,6 +90,10 @@
       --link-underbar: rgba(57, 255, 116, .9);
       --link-underbar-soft: rgba(0, 255, 0, .2);
       --progress: #00d9ff;
+      --microsoft-blue: #0067b8;
+      --microsoft-blue-dark: #005a9e;
+      --dotnet-purple: #512bd4;
+      --dotnet-purple-deep: #3c1f9f;
       --hot-orange: #5c1d08;
       --shadow: 0 24px 72px rgba(0, 0, 0, .58);
       --display-font: "Bricolage Grotesque", "Public Sans", ui-sans-serif, system-ui, sans-serif;
@@ -378,6 +382,33 @@
       box-shadow:
         0 12px 28px rgba(1, 4, 9, .3),
         0 0 20px rgba(57, 255, 116, .18);
+    }
+
+    .dotnet-button {
+      color: #ffffff;
+      border-color: rgba(255, 255, 255, .18);
+      background: linear-gradient(135deg, var(--microsoft-blue), var(--dotnet-purple));
+      box-shadow:
+        0 12px 28px rgba(0, 103, 184, .28),
+        0 0 18px rgba(81, 43, 212, .22);
+    }
+
+    .dotnet-button .link-icon {
+      background: #ffffff;
+      color: var(--dotnet-purple);
+      border: 1px solid rgba(255, 255, 255, .62);
+    }
+
+    .pill.dotnet-button:hover,
+    .pill.dotnet-button:active,
+    .button.dotnet-button:hover,
+    .button.dotnet-button:active {
+      color: #ffffff;
+      border-color: var(--terminal-green);
+      background: linear-gradient(135deg, var(--microsoft-blue-dark), var(--dotnet-purple-deep));
+      box-shadow:
+        0 12px 28px rgba(0, 255, 0, .2),
+        0 0 24px rgba(57, 255, 116, .28);
     }
 
     .pill.resume-nav-button {
@@ -906,6 +937,12 @@
           </svg>
           My GitHub
         </a>
+        <a class="pill dotnet-button" href="https://brettdrake.org:8080/swagger">
+          <svg class="link-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path fill="currentColor" d="M24 8.77h-2.468v7.565h-1.425V8.77h-2.462V7.53H24zm-6.852 7.565h-4.821V7.53h4.63v1.24h-3.205v2.494h2.953v1.234h-2.953v2.604h3.396zm-6.708 0H8.882L4.78 9.863a2.896 2.896 0 0 1-.258-.51h-.036c.032.189.048.592.048 1.21v5.772H3.157V7.53h1.659l3.965 6.32c.167.261.275.442.323.54h.024c-.04-.233-.06-.629-.06-1.185V7.529h1.372zm-8.703-.693a.868.829 0 0 1-.869.829.868.829 0 0 1-.868-.83.868.829 0 0 1 .868-.828.868.829 0 0 1 .869.829Z"></path>
+          </svg>
+          Swagger API Backend
+        </a>
         <a class="pill resume-button resume-nav-button" href="https://brettdrake.org/brett-drake-resume.pdf">
           <svg class="link-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
             <path fill="currentColor" d="M6 2h8l4 4v7h-2V8h-4V4H8v16h4v2H6V2Zm8 2.8V6h1.2L14 4.8ZM9 11h6V9.5H9V11Zm0 4h5v-1.5H9V15Zm9-1h2v4.2l1.6-1.6L23 18l-4 4-4-4 1.4-1.4 1.6 1.6V14Zm-4 8v-2h10v2H14Z"></path>
@@ -937,6 +974,12 @@
               <path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82A7.65 7.65 0 0 1 8 3.86c.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"></path>
             </svg>
             My GitHub
+          </a>
+          <a class="button dotnet-button" href="https://brettdrake.org:8080/swagger">
+            <svg class="link-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path fill="currentColor" d="M24 8.77h-2.468v7.565h-1.425V8.77h-2.462V7.53H24zm-6.852 7.565h-4.821V7.53h4.63v1.24h-3.205v2.494h2.953v1.234h-2.953v2.604h3.396zm-6.708 0H8.882L4.78 9.863a2.896 2.896 0 0 1-.258-.51h-.036c.032.189.048.592.048 1.21v5.772H3.157V7.53h1.659l3.965 6.32c.167.261.275.442.323.54h.024c-.04-.233-.06-.629-.06-1.185V7.529h1.372zm-8.703-.693a.868.829 0 0 1-.869.829.868.829 0 0 1-.868-.83.868.829 0 0 1 .868-.828.868.829 0 0 1 .869.829Z"></path>
+            </svg>
+            Swagger API Backend
           </a>
           <a class="button resume-button" href="https://brettdrake.org/brett-drake-resume.pdf">
             <svg class="link-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
