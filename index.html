@@ -90,6 +90,7 @@
       --link-underbar: rgba(57, 255, 116, .9);
       --link-underbar-soft: rgba(0, 255, 0, .2);
       --progress: #00d9ff;
+      --queued-red: #ff5c6c;
       --microsoft-blue: #0067b8;
       --microsoft-blue-dark: #005a9e;
       --dotnet-purple: #512bd4;
@@ -743,6 +744,20 @@
       color: #d9fbff;
     }
 
+    .status.queued {
+      border-color: rgba(255, 92, 108, .44);
+      border-left: 3px solid var(--queued-red);
+      background: rgba(143, 47, 12, .11);
+      box-shadow:
+        inset 0 1px 0 rgba(255, 92, 108, .12),
+        0 0 18px rgba(255, 92, 108, .12);
+    }
+
+    .status.queued span,
+    .status.queued strong {
+      color: #ffd9dd;
+    }
+
     .ports {
       display: grid;
       gap: 10px;
@@ -1069,17 +1084,24 @@
         <div class="panel-inner">
           <h2>What This Is</h2>
           <p class="quiet">
-            The code is already in GitHub. Each frontend gets its own subdomain,
-            making it easy to show breadth without burying recruiters in one giant repo.
+            Code exists on GitHub for each planned subdomain. Now, with ChatGPT's Codex
+            becoming so powerful, I should be able to not only finish this, but build anything I can dream.
           </p>
           <div class="status-grid">
             <div class="status ready">
               <strong>3 up</strong>
-              <span>NextJS, SolidJS, and the main-domain API docs are already reachable.</span>
+              <span>
+                The API and both frontends are live. For the easiest demo, open either frontend;
+                both use the same C#/.NET API. To use Swagger directly, get a token from
+                user/login, then enter it with Authorize.
+              </span>
             </div>
-            <div class="status">
+            <div class="status queued">
               <strong>4 queued</strong>
-              <span>Angular, Vite, Remix, and Create React App are queued.</span>
+              <span>
+                Angular, Vite, Remix, and Create React App are queued.
+                I will probably add Blazor to this to showcase MAUI. I may add Svelte.
+              </span>
             </div>
           </div>
         </div>
