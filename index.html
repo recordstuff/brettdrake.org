@@ -825,6 +825,26 @@
       outline-offset: 4px;
     }
 
+    a.angular-link:not(.pill):not(.button) {
+      color: #ffe28b;
+      background:
+        linear-gradient(90deg, var(--yellow), #ffd75e) 0 100% / 100% 3px no-repeat,
+        linear-gradient(90deg, rgba(235, 180, 22, .28), transparent) 0 100% / 100% 8px no-repeat;
+      text-shadow: 0 0 10px rgba(235, 180, 22, .24);
+    }
+
+    a.angular-link:not(.pill):not(.button):hover {
+      color: #fff3bd;
+      background-size: 100% 5px, 100% 11px;
+      text-shadow:
+        0 0 10px rgba(235, 180, 22, .5),
+        0 0 18px rgba(255, 215, 94, .24);
+    }
+
+    a.angular-link:not(.pill):not(.button):focus-visible {
+      outline-color: var(--yellow);
+    }
+
     .tag {
       padding: 6px 9px;
       border: 1px solid rgba(255, 150, 210, .24);
@@ -849,6 +869,24 @@
       border: 1px solid rgba(0, 217, 255, .36);
       color: var(--progress);
       box-shadow: 0 0 14px rgba(0, 217, 255, .12);
+    }
+
+    .tag.construction {
+      display: inline-flex;
+      width: 38px;
+      min-height: 32px;
+      align-items: center;
+      justify-content: center;
+      padding: 5px 7px;
+      border-color: rgba(235, 180, 22, .42);
+      background: rgba(235, 180, 22, .16);
+      color: #ffe28b;
+      box-shadow: 0 0 14px rgba(235, 180, 22, .14);
+    }
+
+    .construction-icon {
+      width: 20px;
+      height: 20px;
     }
 
     .hosting-story {
@@ -1068,7 +1106,7 @@
               <div class="line"><span><a class="terminal-link" href="https://brettdrake.org:8080/swagger">brettdrake.org:8080/swagger</a></span><span class="done">live</span></div>
               <div class="line"><span><a class="terminal-link" href="https://nextjs.brettdrake.org/">nextjs.brettdrake.org</a></span><span class="done">live</span></div>
               <div class="line"><span><a class="terminal-link" href="https://solidjs.brettdrake.org/">solidjs.brettdrake.org</a></span><span class="done">live</span></div>
-              <div class="line"><span>angular.brettdrake.org</span><span>queued</span></div>
+              <div class="line"><span><a class="terminal-link angular-link" href="https://angular.brettdrake.org/">angular.brettdrake.org</a></span><span class="next">in progress</span></div>
               <div class="line"><span>vite.brettdrake.org</span><span>queued</span></div>
               <div class="line"><span>remix.brettdrake.org</span><span>queued</span></div>
               <div class="line"><span>createreactapp.brettdrake.org</span><span>queued</span></div>
@@ -1113,28 +1151,39 @@
           <p class="quiet">Local development assignments mapped to each public target.</p>
           <div class="ports">
             <div class="port">
-              <span class="port-number">3000</span>
-              <span class="port-name">NextJS</span>
-              <a class="port-target" href="https://nextjs.brettdrake.org/">nextjs.brettdrake.org</a>
-              <span class="tag complete">Done</span>
-            </div>
-            <div class="port">
               <span class="port-number">3001</span>
               <span class="port-name">API</span>
               <a class="port-target" href="https://brettdrake.org:8080/swagger">brettdrake.org:8080/swagger</a>
               <span class="tag complete">Done</span>
             </div>
             <div class="port">
-              <span class="port-number">3002</span>
-              <span class="port-name">Angular</span>
-              <span class="port-target">angular.brettdrake.org</span>
-              <span class="tag">Planned</span>
+              <span class="port-number">3000</span>
+              <span class="port-name">NextJS</span>
+              <a class="port-target" href="https://nextjs.brettdrake.org/">nextjs.brettdrake.org</a>
+              <span class="tag complete">Done</span>
             </div>
             <div class="port">
               <span class="port-number">3003</span>
               <span class="port-name">SolidJS</span>
               <a class="port-target" href="https://solidjs.brettdrake.org/">solidjs.brettdrake.org</a>
-              <span class="tag complete">Live</span>
+              <span class="tag complete">Done</span>
+            </div>
+            <div class="port">
+              <span class="port-number">3002</span>
+              <span class="port-name">Angular</span>
+              <a class="port-target angular-link" href="https://angular.brettdrake.org/">angular.brettdrake.org</a>
+              <span class="tag construction" role="img" aria-label="Under construction" title="Under construction">
+                <svg class="construction-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                  <rect x="2" y="6" width="20" height="8" rx="1"></rect>
+                  <path d="M17 14v7"></path>
+                  <path d="M7 14v7"></path>
+                  <path d="M17 3v3"></path>
+                  <path d="M7 3v3"></path>
+                  <path d="M10 14 2.3 6.3"></path>
+                  <path d="m14 6 7.7 7.7"></path>
+                  <path d="m8 6 8 8"></path>
+                </svg>
+              </span>
             </div>
             <div class="port">
               <span class="port-number">3004</span>
