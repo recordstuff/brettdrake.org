@@ -35,7 +35,8 @@
       "sameAs": [
         "https://github.com/recordstuff",
         "https://nextjs.brettdrake.org/",
-        "https://solidjs.brettdrake.org/"
+        "https://solidjs.brettdrake.org/",
+        "https://angular.brettdrake.org/"
       ],
       "knowsAbout": [
         "Computer Science",
@@ -62,6 +63,7 @@
         "TypeScript",
         "Next.js",
         "SolidJS",
+        "Angular",
         "JavaScript"
       ],
       "mainEntityOfPage": "https://brettdrake.org/"
@@ -97,6 +99,8 @@
       --dotnet-purple-deep: #3c1f9f;
       --solid-blue: #315aa9;
       --solid-blue-deep: #1a336b;
+      --angular-red: #dd0031;
+      --angular-red-dark: #a6120d;
       --hot-orange: #5c1d08;
       --shadow: 0 24px 72px rgba(0, 0, 0, .58);
       --display-font: "Bricolage Grotesque", "Public Sans", ui-sans-serif, system-ui, sans-serif;
@@ -440,6 +444,34 @@
         0 0 24px rgba(57, 255, 116, .28);
     }
 
+    .angular-button {
+      color: #ffffff;
+      border-color: rgba(255, 255, 255, .2);
+      background: linear-gradient(135deg, var(--angular-red), var(--angular-red-dark));
+      box-shadow:
+        0 12px 28px rgba(221, 0, 49, .3),
+        0 0 18px rgba(255, 255, 255, .12);
+    }
+
+    .angular-button .angular-icon {
+      padding: 1px;
+      border: 1px solid rgba(255, 255, 255, .68);
+      border-radius: 6px;
+      background: #ffffff;
+    }
+
+    .pill.angular-button:hover,
+    .pill.angular-button:active,
+    .button.angular-button:hover,
+    .button.angular-button:active {
+      color: #ffffff;
+      border-color: var(--terminal-green);
+      background: linear-gradient(135deg, #f2184a, var(--angular-red-dark));
+      box-shadow:
+        0 12px 28px rgba(0, 255, 0, .2),
+        0 0 24px rgba(221, 0, 49, .34);
+    }
+
     .pill.resume-nav-button {
       border-color: rgba(57, 255, 116, .28);
       background: #07110b;
@@ -658,8 +690,8 @@
     }
 
     .line span.done {
-      color: #ffe28b;
-      text-shadow: 0 0 10px rgba(235, 180, 22, .24);
+      color: var(--terminal-green);
+      text-shadow: 0 0 10px rgba(0, 255, 0, .24);
     }
 
     .line span.next {
@@ -825,26 +857,6 @@
       outline-offset: 4px;
     }
 
-    a.angular-link:not(.pill):not(.button) {
-      color: #ffe28b;
-      background:
-        linear-gradient(90deg, var(--yellow), #ffd75e) 0 100% / 100% 3px no-repeat,
-        linear-gradient(90deg, rgba(235, 180, 22, .28), transparent) 0 100% / 100% 8px no-repeat;
-      text-shadow: 0 0 10px rgba(235, 180, 22, .24);
-    }
-
-    a.angular-link:not(.pill):not(.button):hover {
-      color: #fff3bd;
-      background-size: 100% 5px, 100% 11px;
-      text-shadow:
-        0 0 10px rgba(235, 180, 22, .5),
-        0 0 18px rgba(255, 215, 94, .24);
-    }
-
-    a.angular-link:not(.pill):not(.button):focus-visible {
-      outline-color: var(--yellow);
-    }
-
     .tag {
       padding: 6px 9px;
       border: 1px solid rgba(255, 150, 210, .24);
@@ -860,8 +872,10 @@
     }
 
     .tag.complete {
-      background: rgba(235, 180, 22, .23);
-      color: #ffe28b;
+      border-color: rgba(0, 255, 0, .42);
+      background: rgba(0, 255, 0, .14);
+      color: var(--terminal-green);
+      box-shadow: 0 0 14px rgba(0, 255, 0, .12);
     }
 
     .tag.progress {
@@ -869,24 +883,6 @@
       border: 1px solid rgba(0, 217, 255, .36);
       color: var(--progress);
       box-shadow: 0 0 14px rgba(0, 217, 255, .12);
-    }
-
-    .tag.construction {
-      display: inline-flex;
-      width: 38px;
-      min-height: 32px;
-      align-items: center;
-      justify-content: center;
-      padding: 5px 7px;
-      border-color: rgba(235, 180, 22, .42);
-      background: rgba(235, 180, 22, .16);
-      color: #ffe28b;
-      box-shadow: 0 0 14px rgba(235, 180, 22, .14);
-    }
-
-    .construction-icon {
-      width: 20px;
-      height: 20px;
     }
 
     .hosting-story {
@@ -1031,6 +1027,14 @@
           </svg>
           SolidJS Frontend
         </a>
+        <a class="pill angular-button" href="https://angular.brettdrake.org/">
+          <svg class="link-icon angular-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path fill="#dd0031" d="M12 2 3.2 5.1l1.4 11.8L12 22l7.4-5.1 1.4-11.8L12 2Z"></path>
+            <path fill="#c3002f" d="M12 2v20l7.4-5.1 1.4-11.8L12 2Z"></path>
+            <path fill="#ffffff" d="m12 5.1-5.2 11.7h1.9l1-2.4h4.6l1 2.4h1.9L12 5.1Zm-1.6 7.7L12 8.9l1.6 3.9h-3.2Z"></path>
+          </svg>
+          Angular Frontend
+        </a>
         <a class="pill github-button" href="https://github.com/recordstuff">
           <svg class="link-icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
             <path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82A7.65 7.65 0 0 1 8 3.86c.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"></path>
@@ -1078,6 +1082,14 @@
             </svg>
             SolidJS Frontend
           </a>
+          <a class="button angular-button" href="https://angular.brettdrake.org/">
+            <svg class="link-icon angular-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path fill="#dd0031" d="M12 2 3.2 5.1l1.4 11.8L12 22l7.4-5.1 1.4-11.8L12 2Z"></path>
+              <path fill="#c3002f" d="M12 2v20l7.4-5.1 1.4-11.8L12 2Z"></path>
+              <path fill="#ffffff" d="m12 5.1-5.2 11.7h1.9l1-2.4h4.6l1 2.4h1.9L12 5.1Zm-1.6 7.7L12 8.9l1.6 3.9h-3.2Z"></path>
+            </svg>
+            Angular Frontend
+          </a>
           <a class="button secondary github-button" href="https://github.com/recordstuff">
             <svg class="link-icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
               <path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82A7.65 7.65 0 0 1 8 3.86c.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"></path>
@@ -1106,7 +1118,7 @@
               <div class="line"><span><a class="terminal-link" href="https://brettdrake.org:8080/swagger">brettdrake.org:8080/swagger</a></span><span class="done">live</span></div>
               <div class="line"><span><a class="terminal-link" href="https://nextjs.brettdrake.org/">nextjs.brettdrake.org</a></span><span class="done">live</span></div>
               <div class="line"><span><a class="terminal-link" href="https://solidjs.brettdrake.org/">solidjs.brettdrake.org</a></span><span class="done">live</span></div>
-              <div class="line"><span><a class="terminal-link angular-link" href="https://angular.brettdrake.org/">angular.brettdrake.org</a></span><span class="next">in progress</span></div>
+              <div class="line"><span><a class="terminal-link" href="https://angular.brettdrake.org/">angular.brettdrake.org</a></span><span class="done">live</span></div>
               <div class="line"><span>vite.brettdrake.org</span><span>queued</span></div>
               <div class="line"><span>remix.brettdrake.org</span><span>queued</span></div>
               <div class="line"><span>createreactapp.brettdrake.org</span><span>queued</span></div>
@@ -1127,17 +1139,17 @@
           </p>
           <div class="status-grid">
             <div class="status ready">
-              <strong>3 up</strong>
+              <strong>4 up</strong>
               <span>
-                The API and both frontends are live. For the easiest demo, open either frontend;
-                both use the same C#/.NET API. To use Swagger directly, get a token from
+                The API and all three frontends are live. For the easiest demo, open any frontend;
+                all three use the same C#/.NET API. To use Swagger directly, get a token from
                 user/login, then enter it with Authorize.
               </span>
             </div>
             <div class="status queued">
-              <strong>4 queued</strong>
+              <strong>3 queued</strong>
               <span>
-                Angular, Vite, Remix, and Create React App are queued.
+                Vite, Remix, and Create React App are queued.
                 I will probably add Blazor to this to showcase MAUI. I may add Svelte.
               </span>
             </div>
@@ -1171,19 +1183,8 @@
             <div class="port">
               <span class="port-number">3002</span>
               <span class="port-name">Angular</span>
-              <a class="port-target angular-link" href="https://angular.brettdrake.org/">angular.brettdrake.org</a>
-              <span class="tag construction" role="img" aria-label="Under construction" title="Under construction">
-                <svg class="construction-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
-                  <rect x="2" y="6" width="20" height="8" rx="1"></rect>
-                  <path d="M17 14v7"></path>
-                  <path d="M7 14v7"></path>
-                  <path d="M17 3v3"></path>
-                  <path d="M7 3v3"></path>
-                  <path d="M10 14 2.3 6.3"></path>
-                  <path d="m14 6 7.7 7.7"></path>
-                  <path d="m8 6 8 8"></path>
-                </svg>
-              </span>
+              <a class="port-target" href="https://angular.brettdrake.org/">angular.brettdrake.org</a>
+              <span class="tag complete">Done</span>
             </div>
             <div class="port">
               <span class="port-number">3004</span>
