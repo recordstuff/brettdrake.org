@@ -740,11 +740,18 @@
     }
 
     .overview-copy a:not(.pill):not(.button) {
-      background-size: 100% 1px, 100% 4px;
+      display: inline;
+      padding-bottom: 0;
+      background: none;
+      text-decoration-line: underline;
+      text-decoration-color: var(--terminal-green);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 2px;
     }
 
     .overview-copy a:not(.pill):not(.button):hover {
-      background-size: 100% 2px, 100% 5px;
+      background: none;
+      text-decoration-thickness: 2px;
     }
 
     .ports {
