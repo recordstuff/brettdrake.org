@@ -92,7 +92,6 @@
       --link-underbar: rgba(57, 255, 116, .9);
       --link-underbar-soft: rgba(0, 255, 0, .2);
       --progress: #00d9ff;
-      --queued-red: #ff5c6c;
       --microsoft-blue: #0067b8;
       --microsoft-blue-dark: #005a9e;
       --dotnet-purple: #512bd4;
@@ -736,60 +735,6 @@
       color: var(--muted);
     }
 
-    .status-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 12px;
-      margin-top: 18px;
-    }
-
-    .status {
-      min-height: 96px;
-      padding: 16px;
-      border: 1px solid rgba(255, 255, 255, .12);
-      border-radius: 8px;
-      background: rgba(255, 255, 255, .06);
-    }
-
-    .status strong {
-      display: block;
-      margin-bottom: 6px;
-      font-size: 1.2rem;
-    }
-
-    .status span {
-      color: var(--muted);
-      font-size: .94rem;
-    }
-
-    .status.ready {
-      border-color: rgba(0, 217, 255, .44);
-      border-left: 3px solid var(--progress);
-      background: rgba(0, 217, 255, .075);
-      box-shadow:
-        inset 0 1px 0 rgba(0, 217, 255, .12),
-        0 0 18px rgba(0, 217, 255, .12);
-    }
-
-    .status.ready span,
-    .status.ready strong {
-      color: #d9fbff;
-    }
-
-    .status.queued {
-      border-color: rgba(255, 92, 108, .44);
-      border-left: 3px solid var(--queued-red);
-      background: rgba(143, 47, 12, .11);
-      box-shadow:
-        inset 0 1px 0 rgba(255, 92, 108, .12),
-        0 0 18px rgba(255, 92, 108, .12);
-    }
-
-    .status.queued span,
-    .status.queued strong {
-      color: #ffd9dd;
-    }
-
     .ports {
       display: grid;
       gap: 10px;
@@ -838,8 +783,8 @@
       text-decoration: none;
       padding-bottom: 3px;
       background:
-        linear-gradient(90deg, var(--terminal-green), var(--link-underbar)) 0 100% / 100% 3px no-repeat,
-        linear-gradient(90deg, var(--link-underbar-soft), transparent) 0 100% / 100% 8px no-repeat;
+        linear-gradient(90deg, var(--terminal-green), var(--link-underbar)) 0 100% / 100% 2px no-repeat,
+        linear-gradient(90deg, var(--link-underbar-soft), transparent) 0 100% / 100% 5px no-repeat;
       text-shadow: 0 0 10px rgba(57, 255, 116, .18);
       transition: color .2s ease, background-size .2s ease, text-shadow .2s ease;
     }
@@ -967,10 +912,6 @@
       .pill,
       .button {
         width: 100%;
-      }
-
-      .status-grid {
-        grid-template-columns: 1fr;
       }
 
       .port {
@@ -1139,23 +1080,6 @@
             <a href="https://solidjs.brettdrake.org/">SolidJS</a> demos are also hosted. All three
             frontends hit the same <a href="https://brettdrake.org:8080/swagger">.NET API backend</a>.
           </p>
-          <div class="status-grid">
-            <div class="status ready">
-              <strong>4 up</strong>
-              <span>
-                The API and all three frontends are live. For the easiest demo, open any frontend;
-                all three use the same C#/.NET API. To use Swagger directly, get a token from
-                user/login, then enter it with Authorize.
-              </span>
-            </div>
-            <div class="status queued">
-              <strong>3 queued</strong>
-              <span>
-                Vite, Remix, and Create React App are queued.
-                I will probably add Blazor to this to showcase MAUI. I may add Svelte.
-              </span>
-            </div>
-          </div>
         </div>
       </div>
 
