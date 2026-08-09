@@ -92,7 +92,6 @@
       --link-underbar: rgba(57, 255, 116, .9);
       --link-underbar-soft: rgba(0, 255, 0, .2);
       --progress: #00d9ff;
-      --queued-red: #ff5c6c;
       --microsoft-blue: #0067b8;
       --microsoft-blue-dark: #005a9e;
       --dotnet-purple: #512bd4;
@@ -705,7 +704,7 @@
 
     .sections {
       display: grid;
-      grid-template-columns: minmax(0, .78fr) minmax(0, 1.22fr);
+      grid-template-columns: 1fr;
       gap: 22px;
       margin-top: 22px;
       align-items: start;
@@ -736,58 +735,24 @@
       color: var(--muted);
     }
 
-    .status-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 12px;
-      margin-top: 18px;
+    .overview-copy,
+    .hosting-copy {
+      line-height: 1.65;
     }
 
-    .status {
-      min-height: 96px;
-      padding: 16px;
-      border: 1px solid rgba(255, 255, 255, .12);
-      border-radius: 8px;
-      background: rgba(255, 255, 255, .06);
+    .overview-copy a:not(.pill):not(.button) {
+      display: inline;
+      padding-bottom: 0;
+      background: none;
+      text-decoration-line: underline;
+      text-decoration-color: var(--terminal-green);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 3px;
     }
 
-    .status strong {
-      display: block;
-      margin-bottom: 6px;
-      font-size: 1.2rem;
-    }
-
-    .status span {
-      color: var(--muted);
-      font-size: .94rem;
-    }
-
-    .status.ready {
-      border-color: rgba(0, 217, 255, .44);
-      border-left: 3px solid var(--progress);
-      background: rgba(0, 217, 255, .075);
-      box-shadow:
-        inset 0 1px 0 rgba(0, 217, 255, .12),
-        0 0 18px rgba(0, 217, 255, .12);
-    }
-
-    .status.ready span,
-    .status.ready strong {
-      color: #d9fbff;
-    }
-
-    .status.queued {
-      border-color: rgba(255, 92, 108, .44);
-      border-left: 3px solid var(--queued-red);
-      background: rgba(143, 47, 12, .11);
-      box-shadow:
-        inset 0 1px 0 rgba(255, 92, 108, .12),
-        0 0 18px rgba(255, 92, 108, .12);
-    }
-
-    .status.queued span,
-    .status.queued strong {
-      color: #ffd9dd;
+    .overview-copy a:not(.pill):not(.button):hover {
+      background: none;
+      text-decoration-thickness: 2px;
     }
 
     .ports {
@@ -838,8 +803,8 @@
       text-decoration: none;
       padding-bottom: 3px;
       background:
-        linear-gradient(90deg, var(--terminal-green), var(--link-underbar)) 0 100% / 100% 3px no-repeat,
-        linear-gradient(90deg, var(--link-underbar-soft), transparent) 0 100% / 100% 8px no-repeat;
+        linear-gradient(90deg, var(--terminal-green), var(--link-underbar)) 0 100% / 100% 2px no-repeat,
+        linear-gradient(90deg, var(--link-underbar-soft), transparent) 0 100% / 100% 5px no-repeat;
       text-shadow: 0 0 10px rgba(57, 255, 116, .18);
       transition: color .2s ease, background-size .2s ease, text-shadow .2s ease;
     }
@@ -969,10 +934,6 @@
         width: 100%;
       }
 
-      .status-grid {
-        grid-template-columns: 1fr;
-      }
-
       .port {
         grid-template-columns: 64px minmax(0, 1fr);
       }
@@ -1016,7 +977,7 @@
             <path fill="currentColor" d="M262 0h68.5v12.7h-27.2v66.6h-13.6V12.7H262V0ZM149 0v12.7H94v20.4h44.3v12.6H94v21h55v12.6H80.5V0h68.7zm34.3 0h-17.8l63.8 79.4h17.9l-32-39.7 32-39.6h-17.9l-23 28.6-23-28.6zm18.3 56.7-9-11-27.1 33.7h17.8l18.3-22.7z"></path>
             <path fill="currentColor" d="M81 79.3 17 0H0v79.3h13.6V17l50.2 62.3H81Zm252.6-.4c-1 0-1.8-.4-2.5-1s-1.1-1.6-1.1-2.6.3-1.8 1-2.5 1.6-1 2.6-1 1.8.3 2.5 1a3.4 3.4 0 0 1 .6 4.3 3.7 3.7 0 0 1-3 1.8zm23.2-33.5h6v23.3c0 2.1-.4 4-1.3 5.5a9.1 9.1 0 0 1-3.8 3.5c-1.6.8-3.5 1.3-5.7 1.3-2 0-3.7-.4-5.3-1s-2.8-1.8-3.7-3.2c-.9-1.3-1.4-3-1.4-5h6c.1.8.3 1.6.7 2.2s1 1.2 1.6 1.5c.7.4 1.5.5 2.4.5 1 0 1.8-.2 2.4-.6a4 4 0 0 0 1.6-1.8c.3-.8.5-1.8.5-3V45.5zm30.9 9.1a4.4 4.4 0 0 0-2-3.3 7.5 7.5 0 0 0-4.3-1.1c-1.3 0-2.4.2-3.3.5-.9.4-1.6 1-2 1.6a3.5 3.5 0 0 0-.3 4c.3.5.7.9 1.3 1.2l1.8 1 2 .5 3.2.8c1.3.3 2.5.7 3.7 1.2a13 13 0 0 1 3.2 1.8 8.1 8.1 0 0 1 3 6.5c0 2-.5 3.7-1.5 5.1a10 10 0 0 1-4.4 3.5c-1.8.8-4.1 1.2-6.8 1.2-2.6 0-4.9-.4-6.8-1.2-2-.8-3.4-2-4.5-3.5a10 10 0 0 1-1.7-5.6h6a5 5 0 0 0 3.5 4.6c1 .4 2.2.6 3.4.6 1.3 0 2.5-.2 3.5-.6 1-.4 1.8-1 2.4-1.7a4 4 0 0 0 .8-2.4c0-.9-.2-1.6-.7-2.2a11 11 0 0 0-2.1-1.4l-3.2-1-3.8-1c-2.8-.7-5-1.7-6.6-3.2a7.2 7.2 0 0 1-2.4-5.7 8 8 0 0 1 1.7-5 10 10 0 0 1 4.3-3.5c2-.8 4-1.2 6.4-1.2 2.3 0 4.4.4 6.2 1.2 1.8.8 3.2 2 4.3 3.4 1 1.4 1.5 3 1.5 5h-5.8z"></path>
           </svg>
-          React NextJS Frontend
+          React Inventory App
         </a>
         <a class="pill solidjs-button" href="https://solidjs.brettdrake.org/">
           <svg class="link-icon solidjs-icon" viewBox="0 0 166 155.3" aria-hidden="true" focusable="false">
@@ -1025,7 +986,7 @@
             <path fill="#315aa9" d="M134 80a45 45 0 0 0-48-15L24 85 4 120l112 19 20-36c4-7 3-15-2-23z"></path>
             <path fill="#1a336b" d="M114 115a45 45 0 0 0-48-15L4 120s53 40 94 30l3-1c17-5 23-21 13-34z"></path>
           </svg>
-          SolidJS Frontend
+          SolidJS Demo
         </a>
         <a class="pill angular-button" href="https://angular.brettdrake.org/">
           <svg class="link-icon angular-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
@@ -1033,7 +994,7 @@
             <path fill="#c3002f" d="M12 2v20l7.4-5.1 1.4-11.8L12 2Z"></path>
             <path fill="#ffffff" d="m12 5.1-5.2 11.7h1.9l1-2.4h4.6l1 2.4h1.9L12 5.1Zm-1.6 7.7L12 8.9l1.6 3.9h-3.2Z"></path>
           </svg>
-          Angular Frontend
+          Angular Demo
         </a>
         <a class="pill github-button" href="https://github.com/recordstuff">
           <svg class="link-icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
@@ -1071,7 +1032,7 @@
               <path fill="currentColor" d="M262 0h68.5v12.7h-27.2v66.6h-13.6V12.7H262V0ZM149 0v12.7H94v20.4h44.3v12.6H94v21h55v12.6H80.5V0h68.7zm34.3 0h-17.8l63.8 79.4h17.9l-32-39.7 32-39.6h-17.9l-23 28.6-23-28.6zm18.3 56.7-9-11-27.1 33.7h17.8l18.3-22.7z"></path>
               <path fill="currentColor" d="M81 79.3 17 0H0v79.3h13.6V17l50.2 62.3H81Zm252.6-.4c-1 0-1.8-.4-2.5-1s-1.1-1.6-1.1-2.6.3-1.8 1-2.5 1.6-1 2.6-1 1.8.3 2.5 1a3.4 3.4 0 0 1 .6 4.3 3.7 3.7 0 0 1-3 1.8zm23.2-33.5h6v23.3c0 2.1-.4 4-1.3 5.5a9.1 9.1 0 0 1-3.8 3.5c-1.6.8-3.5 1.3-5.7 1.3-2 0-3.7-.4-5.3-1s-2.8-1.8-3.7-3.2c-.9-1.3-1.4-3-1.4-5h6c.1.8.3 1.6.7 2.2s1 1.2 1.6 1.5c.7.4 1.5.5 2.4.5 1 0 1.8-.2 2.4-.6a4 4 0 0 0 1.6-1.8c.3-.8.5-1.8.5-3V45.5zm30.9 9.1a4.4 4.4 0 0 0-2-3.3 7.5 7.5 0 0 0-4.3-1.1c-1.3 0-2.4.2-3.3.5-.9.4-1.6 1-2 1.6a3.5 3.5 0 0 0-.3 4c.3.5.7.9 1.3 1.2l1.8 1 2 .5 3.2.8c1.3.3 2.5.7 3.7 1.2a13 13 0 0 1 3.2 1.8 8.1 8.1 0 0 1 3 6.5c0 2-.5 3.7-1.5 5.1a10 10 0 0 1-4.4 3.5c-1.8.8-4.1 1.2-6.8 1.2-2.6 0-4.9-.4-6.8-1.2-2-.8-3.4-2-4.5-3.5a10 10 0 0 1-1.7-5.6h6a5 5 0 0 0 3.5 4.6c1 .4 2.2.6 3.4.6 1.3 0 2.5-.2 3.5-.6 1-.4 1.8-1 2.4-1.7a4 4 0 0 0 .8-2.4c0-.9-.2-1.6-.7-2.2a11 11 0 0 0-2.1-1.4l-3.2-1-3.8-1c-2.8-.7-5-1.7-6.6-3.2a7.2 7.2 0 0 1-2.4-5.7 8 8 0 0 1 1.7-5 10 10 0 0 1 4.3-3.5c2-.8 4-1.2 6.4-1.2 2.3 0 4.4.4 6.2 1.2 1.8.8 3.2 2 4.3 3.4 1 1.4 1.5 3 1.5 5h-5.8z"></path>
             </svg>
-            React NextJS Frontend
+            React Inventory App
           </a>
           <a class="button solidjs-button" href="https://solidjs.brettdrake.org/">
             <svg class="link-icon solidjs-icon" viewBox="0 0 166 155.3" aria-hidden="true" focusable="false">
@@ -1080,7 +1041,7 @@
               <path fill="#315aa9" d="M134 80a45 45 0 0 0-48-15L24 85 4 120l112 19 20-36c4-7 3-15-2-23z"></path>
               <path fill="#1a336b" d="M114 115a45 45 0 0 0-48-15L4 120s53 40 94 30l3-1c17-5 23-21 13-34z"></path>
             </svg>
-            SolidJS Frontend
+            SolidJS Demo
           </a>
           <a class="button angular-button" href="https://angular.brettdrake.org/">
             <svg class="link-icon angular-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
@@ -1088,7 +1049,7 @@
               <path fill="#c3002f" d="M12 2v20l7.4-5.1 1.4-11.8L12 2Z"></path>
               <path fill="#ffffff" d="m12 5.1-5.2 11.7h1.9l1-2.4h4.6l1 2.4h1.9L12 5.1Zm-1.6 7.7L12 8.9l1.6 3.9h-3.2Z"></path>
             </svg>
-            Angular Frontend
+            Angular Demo
           </a>
           <a class="button secondary github-button" href="https://github.com/recordstuff">
             <svg class="link-icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
@@ -1115,13 +1076,11 @@
               <span class="dot"></span>
             </div>
             <div class="terminal-body">
-              <div class="line"><span><a class="terminal-link" href="https://brettdrake.org:8080/swagger">brettdrake.org:8080/swagger</a></span><span class="done">live</span></div>
-              <div class="line"><span><a class="terminal-link" href="https://nextjs.brettdrake.org/">nextjs.brettdrake.org</a></span><span class="done">live</span></div>
-              <div class="line"><span><a class="terminal-link" href="https://solidjs.brettdrake.org/">solidjs.brettdrake.org</a></span><span class="done">live</span></div>
-              <div class="line"><span><a class="terminal-link" href="https://angular.brettdrake.org/">angular.brettdrake.org</a></span><span class="done">live</span></div>
-              <div class="line"><span>vite.brettdrake.org</span><span>queued</span></div>
-              <div class="line"><span>remix.brettdrake.org</span><span>queued</span></div>
-              <div class="line"><span>createreactapp.brettdrake.org</span><span>queued</span></div>
+              <div class="line"><span><a class="terminal-link" href="https://brettdrake.org:8080/swagger">.NET API Swagger</a></span><span class="done">live</span></div>
+              <div class="line"><span><a class="terminal-link" href="https://nextjs.brettdrake.org/">React Inventory App</a></span><span class="done">live</span></div>
+              <div class="line"><span><a class="terminal-link" href="https://solidjs.brettdrake.org/">SolidJS Demo</a></span><span class="done">live</span></div>
+              <div class="line"><span><a class="terminal-link" href="https://angular.brettdrake.org/">Angular Demo</a></span><span class="done">live</span></div>
+              <div class="line"><span>Blazor Demo</span><span>queued</span></div>
             </div>
           </div>
         </div>
@@ -1133,80 +1092,17 @@
       <div class="panel">
         <div class="panel-inner">
           <h2>What This Is</h2>
-          <p class="quiet">
-            Code exists on GitHub for each planned subdomain. Now, with ChatGPT's Codex
-            becoming so powerful, I should be able to not only finish this, but build anything I can dream.
+          <p class="quiet overview-copy">
+            The <a href="https://nextjs.brettdrake.org/">React Inventory app</a> is perhaps the most
+            interesting thing here. It started as a demo, but I'm now turning it into a fully functional
+            inventory app. The <a href="https://angular.brettdrake.org/">Angular</a> and
+            <a href="https://solidjs.brettdrake.org/">SolidJS</a> demos are also hosted. All three
+            frontends hit the same <a href="https://brettdrake.org:8080/swagger">.NET API backend</a>.
+            I'm looking forward to building the Blazor demo as a mobile app with MAUI.
           </p>
-          <div class="status-grid">
-            <div class="status ready">
-              <strong>4 up</strong>
-              <span>
-                The API and all three frontends are live. For the easiest demo, open any frontend;
-                all three use the same C#/.NET API. To use Swagger directly, get a token from
-                user/login, then enter it with Authorize.
-              </span>
-            </div>
-            <div class="status queued">
-              <strong>3 queued</strong>
-              <span>
-                Vite, Remix, and Create React App are queued.
-                I will probably add Blazor to this to showcase MAUI. I may add Svelte.
-              </span>
-            </div>
-          </div>
         </div>
       </div>
 
-      <div class="panel">
-        <div class="panel-inner">
-          <h2>Local Ports</h2>
-          <p class="quiet">Local development assignments mapped to each public target.</p>
-          <div class="ports">
-            <div class="port">
-              <span class="port-number">3001</span>
-              <span class="port-name">API</span>
-              <a class="port-target" href="https://brettdrake.org:8080/swagger">brettdrake.org:8080/swagger</a>
-              <span class="tag complete">Done</span>
-            </div>
-            <div class="port">
-              <span class="port-number">3000</span>
-              <span class="port-name">NextJS</span>
-              <a class="port-target" href="https://nextjs.brettdrake.org/">nextjs.brettdrake.org</a>
-              <span class="tag complete">Done</span>
-            </div>
-            <div class="port">
-              <span class="port-number">3003</span>
-              <span class="port-name">SolidJS</span>
-              <a class="port-target" href="https://solidjs.brettdrake.org/">solidjs.brettdrake.org</a>
-              <span class="tag complete">Done</span>
-            </div>
-            <div class="port">
-              <span class="port-number">3002</span>
-              <span class="port-name">Angular</span>
-              <a class="port-target" href="https://angular.brettdrake.org/">angular.brettdrake.org</a>
-              <span class="tag complete">Done</span>
-            </div>
-            <div class="port">
-              <span class="port-number">3004</span>
-              <span class="port-name">Vite</span>
-              <span class="port-target">vite.brettdrake.org</span>
-              <span class="tag">Planned</span>
-            </div>
-            <div class="port">
-              <span class="port-number">3005</span>
-              <span class="port-name">Remix</span>
-              <span class="port-target">remix.brettdrake.org</span>
-              <span class="tag">Planned</span>
-            </div>
-            <div class="port">
-              <span class="port-number">3006</span>
-              <span class="port-name">Create React App</span>
-              <span class="port-target">createreactapp.brettdrake.org</span>
-              <span class="tag">Sentimental</span>
-            </div>
-          </div>
-        </div>
-      </div>
     </section>
 
     <section class="panel hosting-story" aria-labelledby="hosting-title">
