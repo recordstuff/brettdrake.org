@@ -620,12 +620,20 @@
                 '</span>';
         }
 
+        function clearTypingDots() {
+            messages
+                .querySelectorAll(".typing-dots")
+                .forEach(dots => dots.remove());
+        }
+
         async function sendPrompt() {
             const prompt = promptInput.value.trim();
 
             if (!prompt || sendButton.disabled) {
                 return;
             }
+
+            clearTypingDots();
 
             addMessage("user", prompt);
             promptInput.value = "";
@@ -708,6 +716,7 @@
             }
             catch (error) {
                 console.error(error);
+                clearTypingDots();
 
                 assistantMessage.wrapper.classList.add("error");
                 assistantMessage.bubble.textContent =

@@ -1858,6 +1858,14 @@
       };
     }
 
+    function clearAiChatTypingDots() {
+      aiChatMessages
+        .querySelectorAll(
+          ".ai-chat-typing-dots"
+        )
+        .forEach(dots => dots.remove());
+    }
+
     async function sendAiChatPrompt() {
       const prompt =
         aiChatPromptInput.value.trim();
@@ -1868,6 +1876,8 @@
       ) {
         return;
       }
+
+      clearAiChatTypingDots();
 
       addAiChatMessage(
         "user",
@@ -1967,6 +1977,7 @@
       }
       catch (error) {
         console.error(error);
+        clearAiChatTypingDots();
 
         assistantMessage.wrapper
           .classList.add(
