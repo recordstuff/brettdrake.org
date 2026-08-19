@@ -1825,8 +1825,8 @@
         role === "user"
           ? "YOU"
           : loadedModelName
-            ? `LOCAL ${loadedModelName}`
-            : "LOCAL MODEL";
+            ? loadedModelName
+            : "MODEL";
 
       const bubble =
         document.createElement("div");
