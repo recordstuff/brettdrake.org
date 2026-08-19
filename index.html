@@ -1447,13 +1447,6 @@
             href="#ai-stack">
             About the Self-Hosted AI Stack
           </a>
-
-          <a
-            class="pill ai-chat-full-link"
-            href="aichatpage.html">
-            Open Full Page AI Chat
-          </a>
-
         </div>
       </div>
 
@@ -1800,6 +1793,38 @@
 
     const aiChatStatusText =
       document.getElementById("aiChatStatusText");
+
+    let loadedModelName = "";
+
+    async function loadModelName() {
+      try {
+        const response = await fetch(
+          "https://brettdrake.org:8080/Chat",
+          {
+            method: "GET",
+            credentials: "include"
+          }
+        );
+
+        if (!response.ok) {
+          throw new Error(
+            `${response.status} ${response.statusText}`
+          );
+        }
+
+        loadedModelName =
+          (await response.text()).trim();
+
+        aiChatStatusText.textContent =
+          `Loaded Model: ${loadedModelName}`;
+      }
+      catch (error) {
+        console.error(error);
+        aiChatStatusText.textContent = "ERROR";
+      }
+    }
+
+    loadModelName();
 
     function scrollAiChatToBottom() {
       requestAnimationFrame(() => {
