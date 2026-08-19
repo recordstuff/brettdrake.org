@@ -1955,7 +1955,9 @@
         }
 
         aiChatStatusText.textContent =
-          "READY";
+          loadedModelName
+            ? `Loaded Model: ${loadedModelName}`
+            : "READY";
       }
       catch (error) {
         console.error(error);
