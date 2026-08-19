@@ -1447,6 +1447,13 @@
             href="#ai-stack">
             About the Self-Hosted AI Stack
           </a>
+
+          <a
+            class="pill ai-chat-full-link"
+            href="aichatpage.html">
+            Open Full Page AI Chat
+          </a>
+
         </div>
       </div>
 
@@ -1794,7 +1801,21 @@
     const aiChatStatusText =
       document.getElementById("aiChatStatusText");
 
+    const aiChatSubtitle =
+      document.querySelector(".ai-chat-subtitle");
+
     let loadedModelName = "";
+    let llmsterHasReplied = false;
+
+    function markLlmsterReady() {
+      if (llmsterHasReplied) {
+        return;
+      }
+
+      llmsterHasReplied = true;
+      aiChatSubtitle.textContent =
+        "LLMSTER IS GO.";
+    }
 
     async function loadModelName() {
       try {
@@ -1968,6 +1989,7 @@
             if (!hasVisibleResponse && finalChunk.trim().length > 0) {
               assistantMessage.bubble.textContent = "";
               hasVisibleResponse = true;
+              markLlmsterReady();
             }
 
             if (hasVisibleResponse) {
@@ -1988,6 +2010,7 @@
           if (!hasVisibleResponse && chunk.trim().length > 0) {
             assistantMessage.bubble.textContent = "";
             hasVisibleResponse = true;
+            markLlmsterReady();
           }
 
           if (hasVisibleResponse) {
