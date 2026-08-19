@@ -955,37 +955,6 @@
       outline-offset: 4px;
     }
 
-    .ai-chat-panel .ai-chat-full-link {
-      min-height: 38px;
-      padding: 8px 12px;
-      border-color: rgba(102, 227, 255, .58);
-      background: linear-gradient(135deg, #0076d8, #0038ff);
-      color: #ffffff;
-      font-size: .78rem;
-      box-shadow:
-        0 9px 22px rgba(0, 56, 255, .25),
-        0 0 20px rgba(0, 168, 255, .16);
-    }
-
-    .ai-chat-panel .ai-chat-full-link:hover {
-      color: #ffffff;
-      border-color: #66e3ff;
-      background: linear-gradient(135deg, #008dfd, #174cff);
-      box-shadow:
-        0 12px 28px rgba(0, 56, 255, .34),
-        0 0 28px rgba(47, 200, 255, .30);
-    }
-
-    .ai-chat-panel .ai-chat-full-link:active {
-      transform: translateY(1px);
-      color: #ffffff;
-      border-color: #2fc8ff;
-      background: linear-gradient(135deg, #005ca8, #0029b8);
-      box-shadow:
-        0 4px 12px rgba(0, 56, 255, .28),
-        inset 0 2px 5px rgba(0, 0, 0, .30);
-    }
-
     .ai-chat-messages {
       min-height: 230px;
       max-height: 360px;
@@ -1248,13 +1217,6 @@
         grid-row: 1;
       }
 
-      .ai-chat-panel .ai-chat-full-link {
-        grid-column: 2;
-        grid-row: 1;
-        width: fit-content;
-        justify-self: end;
-      }
-
       .ai-chat-stack-link {
         grid-column: 1 / -1;
         grid-row: 2;
@@ -1301,10 +1263,6 @@
       .button {
         width: 100%;
       }
-
-      .ai-chat-panel .ai-chat-full-link {
-        width: fit-content;
-      }
     }
 
     @media (max-width: 480px) {
@@ -1313,7 +1271,6 @@
       }
 
       .ai-chat-status,
-      .ai-chat-panel .ai-chat-full-link,
       .ai-chat-stack-link {
         grid-column: 1;
       }
@@ -1324,14 +1281,8 @@
         justify-content: center;
       }
 
-      .ai-chat-panel .ai-chat-full-link {
-        grid-row: 2;
-        width: 100%;
-        justify-self: stretch;
-      }
-
       .ai-chat-stack-link {
-        grid-row: 3;
+        grid-row: 2;
         width: fit-content;
         white-space: normal;
       }
@@ -1446,12 +1397,6 @@
             class="ai-chat-stack-link"
             href="#ai-stack">
             About the Self-Hosted AI Stack
-          </a>
-
-          <a
-            class="pill ai-chat-full-link"
-            href="aichatpage.html">
-            Open Full Page AI Chat
           </a>
 
         </div>
@@ -1645,17 +1590,6 @@
               </div>
 
               <div class="line">
-                <span>
-                  <a
-                    class="terminal-link"
-                    href="aichatpage.html">
-                    AI Native Full Page Chat
-                  </a>
-                </span>
-                <span class="done">live</span>
-              </div>
-
-              <div class="line">
                 <span>Blazor Demo</span>
                 <span>queued</span>
               </div>
@@ -1683,11 +1617,11 @@
           <h2>What This Is</h2>
 
           <p class="quiet overview-copy">
-            This site hosts 1 backend, 3 frontend demos, and a locally hosted AI Chat:
+            This site hosts 1 backend, 3 frontend demos, and a locally hosted AI Chat.
+            The frontend demos are
             <a href="https://nextjs.brettdrake.org/">React NextJS Demo</a>,
-            <a href="https://solidjs.brettdrake.org/">SolidJS Demo</a>,
-            <a href="https://angular.brettdrake.org/">Angular Demo</a>, and
-            <a href="aichatpage.html">Locally Hosted AI Chat</a>.
+            <a href="https://solidjs.brettdrake.org/">SolidJS Demo</a>, and
+            <a href="https://angular.brettdrake.org/">Angular Demo</a>.
             The frontend demos and AI Chat use the same
             <a href="https://brettdrake.org:8080/swagger">.Net API backend</a>.
             The Blazor mobile app is next.
