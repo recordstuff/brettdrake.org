@@ -1738,6 +1738,12 @@
     const aiChatSubtitle =
       document.querySelector(".ai-chat-subtitle");
 
+    const aiChatTitle =
+      document.getElementById("ai-chat-title");
+
+    const aiChatWelcomeText =
+      document.querySelector("#aiChatWelcome strong");
+
     let loadedModelName = "";
     let llmsterHasReplied = false;
 
@@ -1747,8 +1753,9 @@
       }
 
       llmsterHasReplied = true;
+      aiChatTitle.textContent = "AI Chat";
       aiChatSubtitle.textContent =
-        "LLMSTER IS GO.";
+        "LLMSTER IS LISTENING ON MY LAN.";
     }
 
     async function loadModelName() {
@@ -1772,6 +1779,11 @@
 
         aiChatStatusText.textContent =
           `Loaded Model: ${loadedModelName}`;
+
+        if (aiChatWelcomeText) {
+          aiChatWelcomeText.textContent =
+            `Ask the local ${loadedModelName} about Brett or anything else.`;
+        }
       }
       catch (error) {
         console.error(error);
@@ -1815,7 +1827,9 @@
       label.textContent =
         role === "user"
           ? "YOU"
-          : "LOCAL MODEL";
+          : loadedModelName
+            ? `LOCAL ${loadedModelName}`
+            : "LOCAL MODEL";
 
       const bubble =
         document.createElement("div");
