@@ -776,6 +776,43 @@
       margin: 0;
     }
 
+    .hosting-layout {
+      display: grid;
+      grid-template-columns: minmax(220px, 300px) minmax(0, 1fr);
+      gap: 26px;
+      align-items: start;
+    }
+
+    a.hosting-photo-link {
+      display: block;
+      width: 100%;
+      max-width: 300px;
+      padding: 0;
+      overflow: hidden;
+      border: 1px solid rgba(57, 255, 116, .3);
+      border-radius: 8px;
+      background: none;
+      box-shadow:
+        0 16px 34px rgba(0, 0, 0, .38),
+        0 0 18px rgba(57, 255, 116, .08);
+      transition: border-color .2s ease, box-shadow .2s ease, transform .2s ease;
+    }
+
+    a.hosting-photo-link:hover {
+      border-color: var(--terminal-green);
+      background: none;
+      box-shadow:
+        0 20px 40px rgba(0, 0, 0, .42),
+        0 0 24px rgba(57, 255, 116, .18);
+      transform: translateY(-2px);
+    }
+
+    .hosting-photo {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
     footer {
       display: flex;
       justify-content: space-between;
@@ -1188,6 +1225,10 @@
         grid-template-columns: 1fr;
       }
 
+      .hosting-layout {
+        grid-template-columns: minmax(180px, 260px) minmax(0, 1fr);
+      }
+
       .hero {
         min-height: auto;
       }
@@ -1206,6 +1247,14 @@
     }
 
     @media (max-width: 720px) {
+      .hosting-layout {
+        grid-template-columns: 1fr;
+      }
+
+      a.hosting-photo-link {
+        max-width: 360px;
+      }
+
       .ai-chat-header {
         align-items: flex-start;
         flex-direction: column;
@@ -1717,32 +1766,48 @@
 
       <div class="panel-inner">
 
-        <h2 id="hosting-title">
-          How Is This Site Hosted?
-        </h2>
+        <div class="hosting-layout">
 
-        <div class="hosting-copy">
+          <a
+            class="hosting-photo-link"
+            href="theGreatestContainerServerEver.jpeg"
+            aria-label="View the full-size container server photo">
+            <img
+              class="hosting-photo"
+              src="theGreatestContainerServerEver.jpeg"
+              alt="The computer that hosts Brett Drake's containerized sites">
+          </a>
 
-          <p>
-            Apache is the reverse proxy server, and the API is reused across
-            the frontend subdomains. Apache routes each subdomain to the right
-            Docker container based on that container's exposed port.
-          </p>
+          <div>
 
-          <p>
-            It is running on an older eight-core computer with 32 GB of RAM.
-            Its fancy hardware aged out of Windows 11 support, but that
-            ancient-but-powerful setup is perfect for Linux. The machine
-            comfortably runs Apache and Docker Desktop for Linux.
-          </p>
+            <h2 id="hosting-title">
+              How Is This Site Hosted?
+            </h2>
 
-          <p>
-            Paired with LFT Fiber, my city's lightning-fast internet, it is the
-            solution of my dreams: a super-fast site with more power and more
-            room to grow than a free cloud tier, while I only pay about $20 a
-            year to Squarespace and another $5 a month for a static IP.
-          </p>
+            <div class="hosting-copy">
 
+              <p>
+                Apache is the reverse proxy server, and the API is reused across
+                the frontend subdomains. Apache routes each subdomain to the right
+                Docker container based on that container's exposed port.
+              </p>
+
+              <p>
+                It is running on an older eight-core computer with 32 GB of RAM.
+                Its fancy hardware aged out of Windows 11 support, but that
+                ancient-but-powerful setup is perfect for Linux. The machine
+                comfortably runs Apache and Docker Desktop for Linux.
+              </p>
+
+              <p>
+                Paired with LFT Fiber, my city's lightning-fast internet, it is the
+                solution of my dreams: a super-fast site with more power and more
+                room to grow than a free cloud tier, while I only pay about $20 a
+                year to Squarespace and another $5 a month for a static IP.
+              </p>
+
+            </div>
+          </div>
         </div>
       </div>
     </section>
