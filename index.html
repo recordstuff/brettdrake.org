@@ -290,23 +290,40 @@
     .profile-photo {
       width: clamp(112px, 16vw, 156px);
       aspect-ratio: 1;
+      flex: 0 0 auto;
+      align-self: flex-start;
       margin-bottom: 26px;
+      padding: 0;
       border: 5px solid transparent;
       border-radius: 50%;
       background:
         linear-gradient(#11141b, #11141b) padding-box,
         linear-gradient(135deg, #000000, var(--profile-border-accent)) border-box;
-      object-fit: cover;
-      object-position: center 34%;
       box-shadow: 0 22px 54px rgba(0, 0, 0, .42);
       animation:
         profile-bounce 11.2s linear infinite,
         profile-border-shift 4s ease-in-out infinite;
+      cursor: pointer;
+      overflow: hidden;
       will-change: transform;
     }
 
     .profile-photo:hover {
       animation-play-state: paused;
+    }
+
+    .profile-photo:focus-visible {
+      outline: 3px solid #ffffff;
+      outline-offset: 5px;
+    }
+
+    .profile-photo img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      border-radius: inherit;
+      object-fit: cover;
+      object-position: center 34%;
     }
 
     @keyframes profile-bounce {
@@ -1528,10 +1545,15 @@
 
       <div class="hero-copy">
 
-        <img
+        <button
           class="profile-photo"
-          src="brett.jpg"
-          alt="Brett Drake">
+          id="profilePhotoButton"
+          type="button"
+          aria-label="Catch Brett Drake's spinning head">
+          <img
+            src="brett.jpg"
+            alt="">
+        </button>
 
         <h1>
           Brett Drake, C#/.NET Software Developer
@@ -1763,6 +1785,9 @@
 
     const aiChatWelcomeText =
       document.querySelector("#aiChatWelcome strong");
+
+    const profilePhotoButton =
+      document.getElementById("profilePhotoButton");
 
     let loadedModelName = "";
     let llmsterHasReplied = false;
@@ -2038,6 +2063,13 @@
           event.preventDefault();
           sendAiChatPrompt();
         }
+      }
+    );
+
+    profilePhotoButton.addEventListener(
+      "click",
+      function () {
+        window.alert("You have a very steady hand.");
       }
     );
 
