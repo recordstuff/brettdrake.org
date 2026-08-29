@@ -262,6 +262,7 @@
     }
 
     .hero {
+      position: relative;
       display: grid;
       grid-template-columns: minmax(0, 1.1fr) minmax(320px, .9fr);
       min-height: 560px;
@@ -272,13 +273,39 @@
         linear-gradient(135deg, rgba(7, 17, 11, .95), rgba(3, 9, 5, .96)),
         radial-gradient(circle at top left, rgba(57, 255, 116, .2), transparent 42%);
       box-shadow: var(--shadow);
+      isolation: isolate;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(135deg, rgba(3, 17, 35, .97), rgba(2, 8, 23, .98)),
+        radial-gradient(circle at top left, rgba(47, 200, 255, .34), transparent 46%);
+      opacity: 0;
+      animation: hero-gradient-shift 10s ease-in-out infinite;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    @keyframes hero-gradient-shift {
+      0%, 100% {
+        opacity: 0;
+      }
+
+      50% {
+        opacity: 1;
+      }
     }
 
     .hero-copy {
+      position: relative;
       display: flex;
       flex-direction: column;
       justify-content: center;
       padding: clamp(32px, 6vw, 72px);
+      z-index: 1;
     }
 
     .profile-photo {
@@ -511,6 +538,7 @@
         linear-gradient(135deg, #000000, #06180b 54%, var(--matrix-dim));
       color: white;
       isolation: isolate;
+      z-index: 1;
     }
 
     .hero-visual::before {
@@ -1364,6 +1392,10 @@
       }
 
       .profile-photo {
+        animation: none;
+      }
+
+      .hero::before {
         animation: none;
       }
     }
