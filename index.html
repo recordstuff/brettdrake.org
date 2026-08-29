@@ -773,7 +773,28 @@
     }
 
     .ai-stack-story h2 {
+      color: #c5f3ff;
       text-shadow: 0 0 18px rgba(47, 200, 255, .3);
+    }
+
+    .ai-stack-story .hosting-copy {
+      color: #8edcff;
+    }
+
+    .ai-stack-story .hosting-copy a {
+      color: #d2f7ff;
+      background:
+        linear-gradient(90deg, #66e3ff, #0038ff) 0 100% / 100% 2px no-repeat,
+        linear-gradient(90deg, rgba(47, 200, 255, .28), transparent) 0 100% / 100% 6px no-repeat;
+      text-shadow: 0 0 12px rgba(47, 200, 255, .38);
+    }
+
+    .ai-stack-story .hosting-copy a:hover {
+      color: #ffffff;
+      background-size: 100% 5px, 100% 11px;
+      text-shadow:
+        0 0 12px rgba(102, 227, 255, .72),
+        0 0 22px rgba(0, 168, 255, .42);
     }
 
     #ai-stack {
@@ -1788,7 +1809,10 @@
               <p>
                 Chat requests go through my C#/.NET API backend, which communicates
                 with the Mac mini over my local network. The model is served by
-                LM Studio's headless LMS server.
+                <a
+                  href="https://lmstudio.ai/docs/app/basics/lmstudio-vs-llmster-vs-lms"
+                  target="_blank"
+                  rel="noopener">LM Studio's headless llmster daemon</a>.
               </p>
 
               <p>
