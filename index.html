@@ -761,6 +761,21 @@
       margin-top: 22px;
     }
 
+    .ai-stack-story {
+      border-color: rgba(47, 200, 255, .48);
+      background:
+        radial-gradient(circle at 92% 0%, rgba(0, 168, 255, .2), transparent 34%),
+        linear-gradient(135deg, rgba(3, 14, 28, .96), rgba(0, 5, 13, .96));
+      box-shadow:
+        0 18px 46px rgba(0, 0, 0, .4),
+        0 0 32px rgba(0, 168, 255, .1),
+        inset 0 1px 0 rgba(47, 200, 255, .11);
+    }
+
+    .ai-stack-story h2 {
+      text-shadow: 0 0 18px rgba(47, 200, 255, .3);
+    }
+
     #ai-stack {
       scroll-margin-top: 20px;
     }
@@ -783,7 +798,11 @@
       align-items: start;
     }
 
-    a.hosting-photo-link {
+    .hosting-layout--media-right {
+      grid-template-columns: minmax(0, 1fr) minmax(220px, 300px);
+    }
+
+    .hosting-layout a.hosting-photo-link {
       display: block;
       width: 100%;
       max-width: 300px;
@@ -798,13 +817,27 @@
       transition: border-color .2s ease, box-shadow .2s ease, transform .2s ease;
     }
 
-    a.hosting-photo-link:hover {
+    .hosting-layout a.hosting-photo-link:hover {
       border-color: var(--terminal-green);
       background: none;
       box-shadow:
         0 20px 40px rgba(0, 0, 0, .42),
         0 0 24px rgba(57, 255, 116, .18);
       transform: translateY(-2px);
+    }
+
+    .ai-stack-story a.hosting-photo-link {
+      border-color: rgba(47, 200, 255, .58);
+      box-shadow:
+        0 16px 34px rgba(0, 0, 0, .42),
+        0 0 22px rgba(0, 168, 255, .14);
+    }
+
+    .ai-stack-story a.hosting-photo-link:hover {
+      border-color: #66e3ff;
+      box-shadow:
+        0 20px 40px rgba(0, 0, 0, .46),
+        0 0 28px rgba(47, 200, 255, .24);
     }
 
     .hosting-photo {
@@ -1227,6 +1260,10 @@
 
       .hosting-layout {
         grid-template-columns: minmax(180px, 260px) minmax(0, 1fr);
+      }
+
+      .hosting-layout--media-right {
+        grid-template-columns: minmax(0, 1fr) minmax(180px, 260px);
       }
 
       .hero {
@@ -1727,35 +1764,53 @@
 
     <section
       id="ai-stack"
-      class="panel hosting-story"
+      class="panel hosting-story ai-stack-story"
       aria-labelledby="ai-stack-title">
 
       <div class="panel-inner">
 
-        <h2 id="ai-stack-title">
-          The Self-Hosted AI Stack
-        </h2>
+        <div class="hosting-layout hosting-layout--media-right">
 
-        <div class="hosting-copy">
+          <div>
 
-          <p>
-            The AI chat runs on a self-hosted language model on my Mac mini.
-            Apple silicon's unified memory lets the CPU and GPU share the same
-            memory pool, making the Mac a good fit for running local models.
-          </p>
+            <h2 id="ai-stack-title">
+              The Self-Hosted AI Stack
+            </h2>
 
-          <p>
-            Chat requests go through my C#/.NET API backend, which communicates
-            with the Mac mini over my local network. The model is served by
-            LM Studio's headless LMS server.
-          </p>
+            <div class="hosting-copy">
 
-          <p>
-            I'm still experimenting with different models and configurations,
-            so there may occasionally be some downtime while I test or switch
-            models.
-          </p>
+              <p>
+                The AI chat runs on a self-hosted language model on my Mac mini.
+                Apple silicon's unified memory lets the CPU and GPU share the same
+                memory pool, making the Mac a good fit for running local models.
+              </p>
 
+              <p>
+                Chat requests go through my C#/.NET API backend, which communicates
+                with the Mac mini over my local network. The model is served by
+                LM Studio's headless LMS server.
+              </p>
+
+              <p>
+                I'm still experimenting with different models and configurations,
+                so there may occasionally be some downtime while I test or switch
+                models.
+              </p>
+
+            </div>
+          </div>
+
+          <a
+            class="hosting-photo-link"
+            href="theMacMini.jpg"
+            target="_blank"
+            rel="noopener"
+            aria-label="View the full-resolution Mac mini photo in a new tab">
+            <img
+              class="hosting-photo"
+              src="theMacMini.jpg"
+              alt="The Mac mini that runs Brett Drake's self-hosted AI model">
+          </a>
         </div>
       </div>
     </section>
@@ -1771,7 +1826,9 @@
           <a
             class="hosting-photo-link"
             href="theGreatestContainerServerEver.jpeg"
-            aria-label="View the full-size container server photo">
+            target="_blank"
+            rel="noopener"
+            aria-label="View the full-resolution container server photo in a new tab">
             <img
               class="hosting-photo"
               src="theGreatestContainerServerEver.jpeg"
