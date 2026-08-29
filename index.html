@@ -78,6 +78,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@10..48,500..800&amp;family=Public+Sans:wght@400;600;700;800;900&amp;display=swap" rel="stylesheet">
 
+  <script src="https://cdn.jsdelivr.net/npm/marked@18.0.11/lib/marked.umd.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/dompurify@3.4.14/dist/purify.min.js"></script>
+
   <style>
     :root {
       --ink: #f4f6ff;
@@ -327,55 +330,21 @@
     }
 
     @keyframes profile-bounce {
-      100% {
-        transform: translate(0, 0) rotate(1800deg);
-      }
-
-      0% {
-        transform: translate(0, 0) rotate(0deg);
-      }
-
-      11% {
-        transform: translate(125%, 18%) rotate(180deg);
-      }
-
-      23% {
-        transform: translate(32%, 62%) rotate(390deg);
-      }
-
-      36% {
-        transform: translate(178%, 42%) rotate(630deg);
-      }
-
-      48% {
-        transform: translate(72%, -18%) rotate(850deg);
-      }
-
-      61% {
-        transform: translate(196%, 88%) rotate(1090deg);
-      }
-
-      73% {
-        transform: translate(112%, 104%) rotate(1310deg);
-      }
-
-      84% {
-        transform: translate(-10%, 80%) rotate(1510deg);
-      }
-
-      93% {
-        transform: translate(68%, 32%) rotate(1675deg);
-      }
+      100% { transform: translate(0, 0) rotate(1800deg); }
+      0% { transform: translate(0, 0) rotate(0deg); }
+      11% { transform: translate(125%, 18%) rotate(180deg); }
+      23% { transform: translate(32%, 62%) rotate(390deg); }
+      36% { transform: translate(178%, 42%) rotate(630deg); }
+      48% { transform: translate(72%, -18%) rotate(850deg); }
+      61% { transform: translate(196%, 88%) rotate(1090deg); }
+      73% { transform: translate(112%, 104%) rotate(1310deg); }
+      84% { transform: translate(-10%, 80%) rotate(1510deg); }
+      93% { transform: translate(68%, 32%) rotate(1675deg); }
     }
 
     @keyframes profile-border-shift {
-      0%, 100% {
-        --profile-border-accent: var(--terminal-green);
-      }
-
-      50% {
-        --profile-border-accent: #2fc8ff;
-      }
+      0%, 100% { --profile-border-accent: var(--terminal-green); }
+      50% { --profile-border-accent: #2fc8ff; }
     }
 
     h1 {
@@ -439,7 +408,9 @@
     }
 
     .pill.dotnet-button:hover,
-    .pill.dotnet-button:active {
+    .pill.dotnet-button:active,
+    .button.dotnet-button:hover,
+    .button.dotnet-button:active {
       color: #ffffff;
       border-color: var(--terminal-green);
       background: linear-gradient(135deg, var(--microsoft-blue-dark), var(--dotnet-purple-deep));
@@ -463,7 +434,9 @@
     }
 
     .pill.solidjs-button:hover,
-    .pill.solidjs-button:active {
+    .pill.solidjs-button:active,
+    .button.solidjs-button:hover,
+    .button.solidjs-button:active {
       color: #ffffff;
       border-color: var(--terminal-green);
       background: linear-gradient(135deg, #4377bb, var(--solid-blue-deep));
@@ -489,7 +462,9 @@
     }
 
     .pill.angular-button:hover,
-    .pill.angular-button:active {
+    .pill.angular-button:active,
+    .button.angular-button:hover,
+    .button.angular-button:active {
       color: #ffffff;
       border-color: var(--terminal-green);
       background: linear-gradient(135deg, #f2184a, var(--angular-red-dark));
@@ -525,7 +500,9 @@
     }
 
     .pill.resume-button:hover,
-    .pill.resume-button:active {
+    .pill.resume-button:active,
+    .button.resume-button:hover,
+    .button.resume-button:active {
       color: var(--terminal-green);
       border-color: var(--terminal-green);
       background:
@@ -535,6 +512,39 @@
         0 16px 34px rgba(0, 0, 0, .38),
         0 0 28px rgba(57, 255, 116, .34),
         inset 0 1px 0 rgba(57, 255, 116, .34);
+    }
+
+    .button.secondary {
+      color: var(--ink);
+      border: 1px solid rgba(255, 255, 255, .18);
+      background: rgba(255, 255, 255, .09);
+    }
+
+    .button.secondary.github-button {
+      color: #24292f;
+      border-color: #d0d7de;
+      background: #f6f8fa;
+    }
+
+    .button.secondary.github-button:hover,
+    .button.secondary.github-button:active {
+      color: #24292f;
+      border-color: #8c959f;
+      background: #ffffff;
+      box-shadow:
+        0 12px 28px rgba(1, 4, 9, .3),
+        0 0 20px rgba(57, 255, 116, .18);
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+      border-color: var(--terminal-green);
+      box-shadow: 0 15px 34px rgba(0, 255, 0, .18);
+    }
+
+    .button:active {
+      transform: translateY(0);
+      border-color: var(--terminal-green);
     }
 
     .hero-visual {
@@ -685,6 +695,14 @@
       text-shadow: 0 0 10px rgba(0, 255, 0, .24);
     }
 
+    .sections {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 22px;
+      margin-top: 22px;
+      align-items: start;
+    }
+
     .panel {
       border: 1px solid rgba(57, 255, 116, .18);
       border-radius: 8px;
@@ -704,11 +722,32 @@
       font-size: 1.15rem;
     }
 
+    .quiet {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .overview-copy,
     .hosting-copy {
       line-height: 1.65;
     }
 
-    a:not(.pill) {
+    .overview-copy a:not(.pill):not(.button) {
+      display: inline;
+      padding-bottom: 0;
+      background: none;
+      text-decoration-line: underline;
+      text-decoration-color: var(--terminal-green);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 3px;
+    }
+
+    .overview-copy a:not(.pill):not(.button):hover {
+      background: none;
+      text-decoration-thickness: 2px;
+    }
+
+    a:not(.pill):not(.button) {
       display: inline-block;
       width: fit-content;
       max-width: 100%;
@@ -722,7 +761,7 @@
       transition: color .2s ease, background-size .2s ease, text-shadow .2s ease;
     }
 
-    a:not(.pill):hover {
+    a:not(.pill):not(.button):hover {
       color: var(--terminal-green);
       background-size: 100% 5px, 100% 11px;
       text-shadow:
@@ -730,13 +769,28 @@
         0 0 18px rgba(0, 255, 0, .22);
     }
 
-    a:not(.pill):focus-visible {
+    a:not(.pill):not(.button):focus-visible {
       outline: 2px solid var(--terminal-green);
       outline-offset: 4px;
     }
 
     .hosting-story {
       margin-top: 22px;
+    }
+
+    #ai-stack {
+      scroll-margin-top: 20px;
+    }
+
+    .hosting-copy {
+      display: grid;
+      gap: 12px;
+      max-width: 940px;
+      color: var(--muted);
+    }
+
+    .hosting-copy p {
+      margin: 0;
     }
 
     .ai-stack-story {
@@ -774,21 +828,6 @@
       text-shadow:
         0 0 12px rgba(102, 227, 255, .72),
         0 0 22px rgba(0, 168, 255, .42);
-    }
-
-    #ai-stack {
-      scroll-margin-top: 20px;
-    }
-
-    .hosting-copy {
-      display: grid;
-      gap: 12px;
-      max-width: 940px;
-      color: var(--muted);
-    }
-
-    .hosting-copy p {
-      margin: 0;
     }
 
     .hosting-layout {
@@ -1089,6 +1128,22 @@
         inset 0 1px 0 rgba(255, 255, 255, .025);
     }
 
+    .ai-chat-message-bubble.ai-chat-markdown {
+      white-space: normal;
+    }
+
+    .ai-chat-message-bubble.ai-chat-markdown > :first-child { margin-top: 0; }
+    .ai-chat-message-bubble.ai-chat-markdown > :last-child { margin-bottom: 0; }
+
+    .ai-chat-message-bubble.ai-chat-markdown pre {
+      overflow-x: auto;
+      white-space: pre-wrap;
+    }
+
+    .ai-chat-message-bubble.ai-chat-markdown code {
+      font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+    }
+
     .ai-chat-message.ai-chat-user {
       justify-items: end;
     }
@@ -1253,16 +1308,17 @@
     }
 
     @media (max-width: 860px) {
-      .hero {
-        grid-template-columns: 1fr;
-      }
-
       .hosting-layout {
         grid-template-columns: minmax(180px, 260px) minmax(0, 1fr);
       }
 
       .hosting-layout--media-right {
         grid-template-columns: minmax(0, 1fr) minmax(180px, 260px);
+      }
+
+      .hero,
+      .sections {
+        grid-template-columns: 1fr;
       }
 
       .hero {
@@ -1346,11 +1402,13 @@
         flex-direction: column;
       }
 
-      .nav-links {
+      .nav-links,
+      .actions {
         width: 100%;
       }
 
-      .pill {
+      .pill,
+      .button {
         width: 100%;
       }
     }
@@ -1401,7 +1459,6 @@
       .profile-photo {
         animation: none;
       }
-
     }
   </style>
 </head>
@@ -1942,6 +1999,7 @@
         '<span class="ai-chat-typing-dots" aria-label="Thinking"><span></span><span></span><span></span></span>';
 
       let hasVisibleResponse = false;
+      let fullResponse = "";
 
       try {
         const response = await fetch(
@@ -1992,7 +2050,8 @@
               markLlmsterReady();
             }
 
-            if (hasVisibleResponse) {
+            if (hasVisibleResponse && finalChunk.length > 0) {
+              fullResponse += finalChunk;
               assistantMessage.bubble.textContent += finalChunk;
             }
 
@@ -2014,8 +2073,22 @@
           }
 
           if (hasVisibleResponse) {
+            fullResponse += chunk;
             assistantMessage.bubble.textContent += chunk;
           }
+
+          scrollAiChatToBottom();
+        }
+
+        if (fullResponse.length > 0) {
+          assistantMessage.bubble.classList.add(
+            "ai-chat-markdown"
+          );
+
+          assistantMessage.bubble.innerHTML =
+            DOMPurify.sanitize(
+              marked.parse(fullResponse)
+            );
 
           scrollAiChatToBottom();
         }
