@@ -971,7 +971,7 @@
       margin: 0;
       color: #eef8ff;
       font-family: var(--display-font);
-      font-size: clamp(1.12rem, 2.4vw, 1.55rem);
+      font-size: clamp(1rem, 2vw, 1.35rem);
       font-weight: 800;
       line-height: 1.15;
       text-shadow: 0 0 20px rgba(47, 200, 255, .32);
@@ -1045,37 +1045,6 @@
     .ai-chat-stack-link:focus-visible {
       outline: 2px solid #2fc8ff;
       outline-offset: 4px;
-    }
-
-    .ai-chat-panel .ai-chat-full-link {
-      min-height: 38px;
-      padding: 8px 12px;
-      border-color: rgba(102, 227, 255, .58);
-      background: linear-gradient(135deg, #0076d8, #0038ff);
-      color: #ffffff;
-      font-size: .78rem;
-      box-shadow:
-        0 9px 22px rgba(0, 56, 255, .25),
-        0 0 20px rgba(0, 168, 255, .16);
-    }
-
-    .ai-chat-panel .ai-chat-full-link:hover {
-      color: #ffffff;
-      border-color: #66e3ff;
-      background: linear-gradient(135deg, #008dfd, #174cff);
-      box-shadow:
-        0 12px 28px rgba(0, 56, 255, .34),
-        0 0 28px rgba(47, 200, 255, .30);
-    }
-
-    .ai-chat-panel .ai-chat-full-link:active {
-      transform: translateY(1px);
-      color: #ffffff;
-      border-color: #2fc8ff;
-      background: linear-gradient(135deg, #005ca8, #0029b8);
-      box-shadow:
-        0 4px 12px rgba(0, 56, 255, .28),
-        inset 0 2px 5px rgba(0, 0, 0, .30);
     }
 
     .ai-chat-messages {
@@ -1171,6 +1140,30 @@
     .ai-chat-message.ai-chat-error .ai-chat-message-bubble {
       border-color: rgba(255, 80, 110, .40);
       background: rgba(62, 5, 18, .58);
+    }
+
+    .ai-chat-typing-dots {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      min-height: 1em;
+    }
+
+    .ai-chat-typing-dots span {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #2fc8ff;
+      box-shadow: 0 0 8px rgba(47, 200, 255, .55);
+      animation: ai-chat-typing-dot 1.1s infinite ease-in-out;
+    }
+
+    .ai-chat-typing-dots span:nth-child(2) { animation-delay: .14s; }
+    .ai-chat-typing-dots span:nth-child(3) { animation-delay: .28s; }
+
+    @keyframes ai-chat-typing-dot {
+      0%, 60%, 100% { transform: translateY(0); opacity: .35; }
+      30% { transform: translateY(-4px); opacity: 1; }
     }
 
     .ai-chat-composer {
@@ -1332,13 +1325,6 @@
         grid-row: 1;
       }
 
-      .ai-chat-panel .ai-chat-full-link {
-        grid-column: 2;
-        grid-row: 1;
-        width: fit-content;
-        justify-self: end;
-      }
-
       .ai-chat-stack-link {
         grid-column: 1 / -1;
         grid-row: 2;
@@ -1385,10 +1371,6 @@
       .button {
         width: 100%;
       }
-
-      .ai-chat-panel .ai-chat-full-link {
-        width: fit-content;
-      }
     }
 
     @media (max-width: 480px) {
@@ -1397,7 +1379,6 @@
       }
 
       .ai-chat-status,
-      .ai-chat-panel .ai-chat-full-link,
       .ai-chat-stack-link {
         grid-column: 1;
       }
@@ -1408,20 +1389,14 @@
         justify-content: center;
       }
 
-      .ai-chat-panel .ai-chat-full-link {
-        grid-row: 2;
-        width: 100%;
-        justify-self: stretch;
-      }
-
       .ai-chat-stack-link {
-        grid-row: 3;
+        grid-row: 2;
         width: fit-content;
         white-space: normal;
       }
 
       .ai-chat-title {
-        font-size: 1.05rem;
+        font-size: .95rem;
       }
 
       .ai-chat-subtitle {
@@ -1510,11 +1485,11 @@
 
           <div class="ai-chat-title-group">
             <h2 class="ai-chat-title" id="ai-chat-title">
-              Brett's AI Native Development -- AI Chat
+              Brett's AI Native Development -- AI Assistant
             </h2>
 
             <p class="ai-chat-subtitle">
-              LOCAL AI — LIVE STREAMING RESPONSE
+              Message LLMster
             </p>
           </div>
         </div>
@@ -1532,12 +1507,6 @@
             About the Self-Hosted AI Stack
           </a>
 
-          <a
-            class="pill ai-chat-full-link"
-            href="aichatpage.html">
-            Open Full Page AI Chat
-          </a>
-
         </div>
       </div>
 
@@ -1551,10 +1520,9 @@
           id="aiChatWelcome">
 
           <strong>
-            Ask the local model something.
+            Ask the local model about Brett or anything else.
           </strong>
 
-          Responses stream into the chat as they are generated.
 
         </div>
       </div>
@@ -1729,17 +1697,6 @@
               </div>
 
               <div class="line">
-                <span>
-                  <a
-                    class="terminal-link"
-                    href="aichatpage.html">
-                    AI Native Full Page Chat
-                  </a>
-                </span>
-                <span class="done">live</span>
-              </div>
-
-              <div class="line">
                 <span>Blazor Demo</span>
                 <span>queued</span>
               </div>
@@ -1767,15 +1724,17 @@
           <h2>What This Is</h2>
 
           <p class="quiet overview-copy">
-            This site hosts 1 backend, 3 frontend demos, and a locally hosted AI Chat:
-            <a href="https://nextjs.brettdrake.org/">React NextJS Demo</a>,
-            <a href="https://solidjs.brettdrake.org/">SolidJS Demo</a>,
-            <a href="https://angular.brettdrake.org/">Angular Demo</a>, and
-            <a href="aichatpage.html">Locally Hosted AI Chat</a>.
-            The frontend demos and AI Chat use the same
-            <a href="https://brettdrake.org:8080/swagger">.Net API backend</a>.
-            The Blazor mobile app is next.
-            If anyone has any requests, please email me at
+            This site features a locally hosted AI chat powered by LLMster, with the model running on my own LAN.
+            The site also includes
+            <a href="https://nextjs.brettdrake.org/">React NextJS</a>,
+            <a href="https://solidjs.brettdrake.org/">SolidJS</a>, and
+            <a href="https://angular.brettdrake.org/">Angular</a>
+            frontend demos.
+            The AI chat and all three frontend demos use the same
+            <a href="https://brettdrake.org:8080/swagger">.NET API backend</a>.
+            I may also add authenticated AI chat with database persistence.
+            A Blazor mobile app is planned next.
+            For questions or any kind of development requests, email
             <a href="mailto:recordstuff@hotmail.com">recordstuff@hotmail.com</a>.
           </p>
 
@@ -1814,12 +1773,6 @@
                   href="https://lmstudio.ai/docs/app/basics/lmstudio-vs-llmster-vs-lms"
                   target="_blank"
                   rel="noopener">LM Studio's headless llmster daemon</a>.
-              </p>
-
-              <p>
-                I'm still experimenting with different models and configurations,
-                so there may occasionally be some downtime while I test or switch
-                models.
               </p>
 
             </div>
@@ -1924,6 +1877,64 @@
     const aiChatStatusText =
       document.getElementById("aiChatStatusText");
 
+    const aiChatSubtitle =
+      document.querySelector(".ai-chat-subtitle");
+
+    const aiChatTitle =
+      document.getElementById("ai-chat-title");
+
+    const aiChatWelcomeText =
+      document.querySelector("#aiChatWelcome strong");
+
+    let loadedModelName = "";
+    let llmsterHasReplied = false;
+
+    function markLlmsterReady() {
+      if (llmsterHasReplied) {
+        return;
+      }
+
+      llmsterHasReplied = true;
+      aiChatTitle.textContent = "AI Assistant";
+      aiChatSubtitle.textContent =
+        "LLMSTER IS LISTENING ON MY LAN.";
+    }
+
+    async function loadModelName() {
+      try {
+        const response = await fetch(
+          "https://brettdrake.org:8080/Chat",
+          {
+            method: "GET",
+            credentials: "include"
+          }
+        );
+
+        if (!response.ok) {
+          throw new Error(
+            `${response.status} ${response.statusText}`
+          );
+        }
+
+        loadedModelName =
+          (await response.text()).trim();
+
+        aiChatStatusText.textContent =
+          `Loaded Model: ${loadedModelName}`;
+
+        if (aiChatWelcomeText) {
+          aiChatWelcomeText.textContent =
+            `Ask ${loadedModelName} about Brett or anything else.`;
+        }
+      }
+      catch (error) {
+        console.error(error);
+        aiChatStatusText.textContent = "ERROR";
+      }
+    }
+
+    loadModelName();
+
     function scrollAiChatToBottom() {
       requestAnimationFrame(() => {
         aiChatMessages.scrollTop =
@@ -1958,7 +1969,9 @@
       label.textContent =
         role === "user"
           ? "YOU"
-          : "LOCAL MODEL";
+          : loadedModelName
+            ? loadedModelName
+            : "MODEL";
 
       const bubble =
         document.createElement("div");
@@ -1981,6 +1994,14 @@
       };
     }
 
+    function clearAiChatTypingDots() {
+      aiChatMessages
+        .querySelectorAll(
+          ".ai-chat-typing-dots"
+        )
+        .forEach(dots => dots.remove());
+    }
+
     async function sendAiChatPrompt() {
       const prompt =
         aiChatPromptInput.value.trim();
@@ -1991,6 +2012,8 @@
       ) {
         return;
       }
+
+      clearAiChatTypingDots();
 
       addAiChatMessage(
         "user",
@@ -2004,6 +2027,11 @@
 
       const assistantMessage =
         addAiChatMessage("assistant");
+
+      assistantMessage.bubble.innerHTML =
+        '<span class="ai-chat-typing-dots" aria-label="Thinking"><span></span><span></span><span></span></span>';
+
+      let hasVisibleResponse = false;
 
       try {
         const response = await fetch(
@@ -2046,30 +2074,50 @@
           } = await reader.read();
 
           if (done) {
-            assistantMessage.bubble.textContent +=
-              decoder.decode();
+            const finalChunk = decoder.decode();
+
+            if (!hasVisibleResponse && finalChunk.trim().length > 0) {
+              assistantMessage.bubble.textContent = "";
+              hasVisibleResponse = true;
+              markLlmsterReady();
+            }
+
+            if (hasVisibleResponse) {
+              assistantMessage.bubble.textContent += finalChunk;
+            }
 
             scrollAiChatToBottom();
-
             break;
           }
 
-          assistantMessage.bubble.textContent +=
-            decoder.decode(
-              value,
-              {
-                stream: true
-              }
-            );
+          const chunk = decoder.decode(
+            value,
+            {
+              stream: true
+            }
+          );
+
+          if (!hasVisibleResponse && chunk.trim().length > 0) {
+            assistantMessage.bubble.textContent = "";
+            hasVisibleResponse = true;
+            markLlmsterReady();
+          }
+
+          if (hasVisibleResponse) {
+            assistantMessage.bubble.textContent += chunk;
+          }
 
           scrollAiChatToBottom();
         }
 
         aiChatStatusText.textContent =
-          "READY";
+          loadedModelName
+            ? `Loaded Model: ${loadedModelName}`
+            : "READY";
       }
       catch (error) {
         console.error(error);
+        clearAiChatTypingDots();
 
         assistantMessage.wrapper
           .classList.add(
