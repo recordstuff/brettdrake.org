@@ -678,14 +678,6 @@
       text-shadow: 0 0 10px rgba(0, 255, 0, .24);
     }
 
-    .sections {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 22px;
-      margin-top: 22px;
-      align-items: start;
-    }
-
     .panel {
       border: 1px solid rgba(57, 255, 116, .18);
       border-radius: 8px;
@@ -705,29 +697,8 @@
       font-size: 1.15rem;
     }
 
-    .quiet {
-      margin: 0;
-      color: var(--muted);
-    }
-
-    .overview-copy,
     .hosting-copy {
       line-height: 1.65;
-    }
-
-    .overview-copy a:not(.pill):not(.button) {
-      display: inline;
-      padding-bottom: 0;
-      background: none;
-      text-decoration-line: underline;
-      text-decoration-color: var(--terminal-green);
-      text-decoration-thickness: 1px;
-      text-underline-offset: 3px;
-    }
-
-    .overview-copy a:not(.pill):not(.button):hover {
-      background: none;
-      text-decoration-thickness: 2px;
     }
 
     a:not(.pill):not(.button) {
@@ -1268,8 +1239,7 @@
     }
 
     @media (max-width: 860px) {
-      .hero,
-      .sections {
+      .hero {
         grid-template-columns: 1fr;
       }
 
@@ -1706,41 +1676,6 @@
         </div>
 
       </section>
-    </section>
-
-    <section
-      class="sections"
-      aria-labelledby="project-details-title">
-
-      <h2
-        id="project-details-title"
-        class="sr-only">
-        Project details
-      </h2>
-
-      <div class="panel">
-        <div class="panel-inner">
-
-          <h2>What This Is</h2>
-
-          <p class="quiet overview-copy">
-            This site features a locally hosted AI chat powered by LLMster, with the model running on my own LAN.
-            The site also includes
-            <a href="https://nextjs.brettdrake.org/">React NextJS</a>,
-            <a href="https://solidjs.brettdrake.org/">SolidJS</a>, and
-            <a href="https://angular.brettdrake.org/">Angular</a>
-            frontend demos.
-            The AI chat and all three frontend demos use the same
-            <a href="https://brettdrake.org:8080/swagger">.NET API backend</a>.
-            I may also add authenticated AI chat with database persistence.
-            A Blazor mobile app is planned next.
-            For questions or any kind of development requests, email
-            <a href="mailto:recordstuff@hotmail.com">recordstuff@hotmail.com</a>.
-          </p>
-
-        </div>
-      </div>
-
     </section>
 
     <section
