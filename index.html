@@ -293,14 +293,42 @@
       object-fit: cover;
       object-position: center 34%;
       box-shadow: 0 22px 54px rgba(0, 0, 0, .42);
+      animation: profile-bounce 17s ease-in-out infinite;
+      will-change: transform;
+    }
+
+    .profile-photo:hover {
+      animation-play-state: paused;
+    }
+
+    @keyframes profile-bounce {
+      0%, 100% {
+        transform: translate(0, 0) rotate(0deg);
+      }
+
+      18% {
+        transform: translate(34px, -12px) rotate(3deg);
+      }
+
+      42% {
+        transform: translate(62px, 16px) rotate(-2deg);
+      }
+
+      67% {
+        transform: translate(18px, 34px) rotate(4deg);
+      }
+
+      84% {
+        transform: translate(-14px, 15px) rotate(-3deg);
+      }
     }
 
     h1 {
       max-width: 760px;
       margin: 0;
       font-family: var(--display-font);
-      font-size: clamp(2.15rem, 4.8vw, 3.9rem);
-      line-height: 1;
+      font-size: clamp(1.25rem, 2.4vw, 2rem);
+      line-height: 1.15;
       font-weight: 700;
       text-shadow: 0 0 24px rgba(57, 255, 116, .28);
     }
@@ -1313,6 +1341,10 @@
         left: 50%;
         top: 50%;
         transform: translate(-50%, -50%);
+      }
+
+      .profile-photo {
+        animation: none;
       }
     }
   </style>
