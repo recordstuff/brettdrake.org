@@ -1722,13 +1722,30 @@
             <div class="hosting-copy">
 
               <p>
-                Apache is the reverse proxy server.  Every frontend uses the same backend API.
+                <a href="https://httpd.apache.org/">Apache</a> is the reverse proxy server.
+                Multiple subdomains are used for different frontend implementations, with
+                each subdomain routed to the appropriate Docker container. All of the
+                frontends share the same backend API.
               </p>
 
               <p>
-                It is running on an older eight-core computer with 32 GB of RAM.
-                Its fancy hardware aged out of Windows 11 support, but that
-                ancient-but-powerful setup is perfect for Linux.
+                Apache and
+                <a href="https://docs.docker.com/desktop/setup/install/linux/">Docker Desktop for Linux</a>
+                make a good combination for this machine because it also serves desktop
+                functions such as running Postman and Inkscape. An HDMI connection also
+                runs to my living room TV.
+              </p>
+
+              <p>
+                If this were intended to be a hardened production server,
+                <a href="https://ubuntu.com/server/docs/">Ubuntu Server</a>
+                with the Docker CLI would be a much more appropriate setup than Docker Desktop.
+              </p>
+
+              <p>
+                The machine itself is an older eight-core computer with 32 GB of RAM.
+                Its capable hardware aged out of Windows 11 support, but as a Linux server
+                it is an absolute powerhouse and is exceptionally well suited to this setup.
               </p>
 
             </div>
