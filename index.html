@@ -1652,6 +1652,12 @@
           role="img"
           aria-label="Brett Drake orbiting a smiling sun">
 
+          <defs>
+            <clipPath id="profileOrbitSunFrontClip">
+              <rect x="125" y="42" width="170" height="86"></rect>
+            </clipPath>
+          </defs>
+
           <ellipse
             class="profile-orbit-path"
             cx="210"
@@ -1701,6 +1707,32 @@
               repeatCount="indefinite"
               rotate="0"
               path="M46 125 A164 78 0 1 0 374 125 A164 78 0 1 0 46 125"></animateMotion>
+          </g>
+
+          <g
+            aria-hidden="true"
+            pointer-events="none"
+            clip-path="url(#profileOrbitSunFrontClip)">
+            <line class="profile-orbit-sun-ray" x1="210" y1="68" x2="210" y2="50"></line>
+            <line class="profile-orbit-sun-ray" x1="210" y1="182" x2="210" y2="200"></line>
+            <line class="profile-orbit-sun-ray" x1="153" y1="125" x2="135" y2="125"></line>
+            <line class="profile-orbit-sun-ray" x1="267" y1="125" x2="285" y2="125"></line>
+            <line class="profile-orbit-sun-ray" x1="170" y1="85" x2="157" y2="72"></line>
+            <line class="profile-orbit-sun-ray" x1="250" y1="85" x2="263" y2="72"></line>
+            <line class="profile-orbit-sun-ray" x1="170" y1="165" x2="157" y2="178"></line>
+            <line class="profile-orbit-sun-ray" x1="250" y1="165" x2="263" y2="178"></line>
+
+            <circle
+              class="profile-orbit-sun-body"
+              cx="210"
+              cy="125"
+              r="45"></circle>
+
+            <ellipse class="profile-orbit-sun-eye" cx="195" cy="117" rx="4" ry="7"></ellipse>
+            <ellipse class="profile-orbit-sun-eye" cx="225" cy="117" rx="4" ry="7"></ellipse>
+            <ellipse class="profile-orbit-sun-cheek" cx="182" cy="132" rx="9" ry="6"></ellipse>
+            <ellipse class="profile-orbit-sun-cheek" cx="238" cy="132" rx="9" ry="6"></ellipse>
+            <path class="profile-orbit-sun-smile" d="M190 136 C200 150 220 150 230 136"></path>
           </g>
 
         </svg>
