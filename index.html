@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Brett Drake | C#/.NET Software Developer Seeking Roles</title>
+  <title>Brett Drake | C#/.NET Software Developer Seeking Work</title>
   <meta name="description" content="Brett Drake is an experienced C#/.NET software developer with work in .NET Framework, .NET Core, .NET 8, ASP.NET, MVC, Web API, Entity Framework, SQL Server, Azure, Blazor, MAUI, Docker, Kubernetes, React, TypeScript, and full-stack software engineering.">
   <meta name="author" content="Brett Drake">
   <meta name="robots" content="index, follow, max-image-preview:large">
@@ -286,16 +286,59 @@
     .hero-copy {
       display: flex;
       flex-direction: column;
-      justify-content: center;
-      padding: clamp(32px, 6vw, 72px);
+      justify-content: flex-start;
+      padding: clamp(18px, 3vw, 28px) clamp(32px, 6vw, 72px) clamp(32px, 6vw, 72px);
     }
 
-    .profile-photo {
-      width: clamp(112px, 16vw, 156px);
-      aspect-ratio: 1;
+    .profile-orbit {
+      width: clamp(300px, 34vw, 420px);
+      max-width: 100%;
+      height: auto;
       flex: 0 0 auto;
       align-self: flex-start;
       margin-bottom: 26px;
+      overflow: visible;
+    }
+
+    .profile-orbit-path {
+      fill: none;
+      stroke: rgba(57, 255, 116, .45);
+      stroke-width: 2;
+      stroke-dasharray: 8 8;
+      filter: drop-shadow(0 0 5px rgba(57, 255, 116, .22));
+    }
+
+    .profile-orbit-sun-ray {
+      stroke: #f6d641;
+      stroke-width: 9;
+      stroke-linecap: round;
+    }
+
+    .profile-orbit-sun-body {
+      fill: #ffe63a;
+      stroke: #f2c934;
+      stroke-width: 5;
+    }
+
+    .profile-orbit-sun-eye {
+      fill: #6d5c46;
+    }
+
+    .profile-orbit-sun-cheek {
+      fill: rgba(255, 146, 170, .72);
+    }
+
+    .profile-orbit-sun-smile {
+      fill: none;
+      stroke: #6d5c46;
+      stroke-width: 5;
+      stroke-linecap: round;
+    }
+
+    .profile-photo {
+      width: 100%;
+      height: 100%;
+      aspect-ratio: 1;
       padding: 0;
       border: 5px solid transparent;
       border-radius: 50%;
@@ -303,12 +346,9 @@
         linear-gradient(#11141b, #11141b) padding-box,
         linear-gradient(135deg, #000000, var(--profile-border-accent)) border-box;
       box-shadow: 0 22px 54px rgba(0, 0, 0, .42);
-      animation:
-        profile-bounce 11.2s linear infinite,
-        profile-border-shift 4s ease-in-out infinite;
+      animation: profile-border-shift 4s ease-in-out infinite;
       cursor: pointer;
       overflow: hidden;
-      will-change: transform;
     }
 
     .profile-photo:hover {
@@ -1329,6 +1369,10 @@
         padding: 34px 24px;
       }
 
+      .profile-orbit {
+        align-self: center;
+      }
+
       .hero-visual {
         min-height: 380px;
       }
@@ -1602,21 +1646,78 @@
 
       <div class="hero-copy">
 
-        <button
-          class="profile-photo"
-          id="profilePhotoButton"
-          type="button"
-          aria-label="Catch Brett Drake's spinning head">
-          <img
-            src="brett.jpg"
-            alt="">
-        </button>
+        <svg
+          class="profile-orbit"
+          viewBox="0 0 420 250"
+          role="img"
+          aria-label="Brett Drake orbiting a smiling sun">
+
+          <ellipse
+            class="profile-orbit-path"
+            cx="210"
+            cy="125"
+            rx="164"
+            ry="78"></ellipse>
+
+          <g aria-hidden="true">
+            <line class="profile-orbit-sun-ray" x1="210" y1="68" x2="210" y2="50"></line>
+            <line class="profile-orbit-sun-ray" x1="210" y1="182" x2="210" y2="200"></line>
+            <line class="profile-orbit-sun-ray" x1="153" y1="125" x2="135" y2="125"></line>
+            <line class="profile-orbit-sun-ray" x1="267" y1="125" x2="285" y2="125"></line>
+            <line class="profile-orbit-sun-ray" x1="170" y1="85" x2="157" y2="72"></line>
+            <line class="profile-orbit-sun-ray" x1="250" y1="85" x2="263" y2="72"></line>
+            <line class="profile-orbit-sun-ray" x1="170" y1="165" x2="157" y2="178"></line>
+            <line class="profile-orbit-sun-ray" x1="250" y1="165" x2="263" y2="178"></line>
+
+            <circle
+              class="profile-orbit-sun-body"
+              cx="210"
+              cy="125"
+              r="45"></circle>
+
+            <ellipse class="profile-orbit-sun-eye" cx="195" cy="117" rx="4" ry="7"></ellipse>
+            <ellipse class="profile-orbit-sun-eye" cx="225" cy="117" rx="4" ry="7"></ellipse>
+            <ellipse class="profile-orbit-sun-cheek" cx="182" cy="132" rx="9" ry="6"></ellipse>
+            <ellipse class="profile-orbit-sun-cheek" cx="238" cy="132" rx="9" ry="6"></ellipse>
+            <path class="profile-orbit-sun-smile" d="M190 136 C200 150 220 150 230 136"></path>
+          </g>
+
+          <g>
+            <foreignObject x="-48" y="-48" width="96" height="96">
+              <button
+                xmlns="http://www.w3.org/1999/xhtml"
+                class="profile-photo"
+                id="profilePhotoButton"
+                type="button"
+                aria-label="Catch Brett Drake's orbiting head">
+                <img
+                  src="brett.jpg"
+                  alt="">
+              </button>
+            </foreignObject>
+
+            <animateMotion
+              dur="11.2s"
+              repeatCount="indefinite"
+              rotate="0"
+              path="M46 125 A164 78 0 1 0 374 125 A164 78 0 1 0 46 125"></animateMotion>
+          </g>
+
+        </svg>
+
         <div class="hosting-copy">
                 <h1>
-                  Brett Drake, C#/.NET Software Developer
+                  Brett Drake, C#/.NET Software Developer Needs A Job
                 </h1>
                 <p>
-                  What to put here?
+                  Give Brett a job! He really needs some coding work of any kind.
+                  Or if you have any requests for development you would like to see on the site,
+                  then <a href="mailto:recordstuff@hotmail.com">email Brett</a>.
+                </p>
+                <p>
+                  You can also find Brett on
+                  <a href="https://stackoverflow.com/users/5003910/brett-drake" target="_blank" rel="noopener">Stack Overflow</a>
+                  and <a href="https://www.linkedin.com/in/brettbdrake/" target="_blank" rel="noopener">LinkedIn</a>.
                 </p>
         </div>
 
@@ -1774,10 +1875,10 @@
               style="width: 100%; height: 100%; object-fit: cover; object-position: center 32%;">
 
           </a>
-
         </div>
       </div>
     </section>
+
     <section
       class="panel hosting-story"
       aria-labelledby="hosting-title">
