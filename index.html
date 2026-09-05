@@ -849,6 +849,11 @@
       text-shadow: 0 0 18px rgba(47, 200, 255, .42);
     }
 
+    #hosting-title {
+      color: var(--terminal-green);
+      text-shadow: 0 0 18px rgba(57, 255, 116, .42);
+    }
+
     .ai-stack-story .hosting-copy {
       color: #58bfff;
       text-shadow: 0 0 10px rgba(0, 168, 255, .18);
@@ -878,7 +883,7 @@
     }
 
     .hosting-layout--media-right {
-      grid-template-columns: minmax(0, 1fr) minmax(220px, 300px);
+      grid-template-columns: minmax(0, 1fr) minmax(220px, 360px);
       align-items: center;
     }
 
@@ -1383,12 +1388,27 @@
     }
 
     @media (max-width: 720px) {
-      .hosting-layout {
-        grid-template-columns: 1fr;
+      .hosting-layout,
+      .hosting-layout--media-right {
+        grid-template-columns: 1fr !important;
       }
 
-      a.hosting-photo-link {
+      .hosting-layout a.hosting-photo-link {
+        width: 100%;
         max-width: 360px;
+        height: auto !important;
+        align-self: auto !important;
+      }
+
+      .hosting-layout .hosting-photo {
+        width: 100% !important;
+        max-width: 100%;
+        height: auto !important;
+      }
+
+      .ai-stack-story .hosting-photo {
+        aspect-ratio: auto;
+        object-fit: contain;
       }
 
       .ai-chat-header {
@@ -1852,8 +1872,7 @@
       <div class="panel-inner">
 
         <div
-          class="hosting-layout hosting-layout--media-right"
-          style="grid-template-columns: minmax(0, 1fr) minmax(220px, 360px);">
+          class="hosting-layout hosting-layout--media-right">
 
           <div>
 
