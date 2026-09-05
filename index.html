@@ -210,10 +210,6 @@
       border: 0;
     }
 
-    .mobile-site-header {
-      display: none;
-    }
-
     .nav {
       display: flex;
       align-items: center;
@@ -371,6 +367,57 @@
       border-radius: inherit;
       object-fit: cover;
       object-position: center 34%;
+    }
+
+    .profile-dialog {
+      width: min(420px, calc(100vw - 32px));
+      padding: 0;
+      border: 1px solid rgba(57, 255, 116, .55);
+      border-radius: 14px;
+      color: var(--ink);
+      background: linear-gradient(180deg, #0a160e, #050a07);
+      box-shadow:
+        0 24px 72px rgba(0, 0, 0, .72),
+        0 0 28px rgba(57, 255, 116, .16);
+    }
+
+    .profile-dialog::backdrop {
+      background: rgba(0, 0, 0, .72);
+      backdrop-filter: blur(3px);
+    }
+
+    .profile-dialog-content {
+      padding: 26px;
+      text-align: center;
+    }
+
+    .profile-dialog-message {
+      margin: 0 0 22px;
+      font-size: 1.05rem;
+      line-height: 1.55;
+    }
+
+    .profile-dialog-close {
+      min-width: 92px;
+      padding: 10px 18px;
+      border: 1px solid var(--terminal-green);
+      border-radius: 8px;
+      color: var(--ink);
+      background: rgba(0, 255, 0, .08);
+      font: inherit;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 0 18px rgba(57, 255, 116, .12);
+    }
+
+    .profile-dialog-close:hover {
+      background: rgba(0, 255, 0, .15);
+      box-shadow: 0 0 22px rgba(57, 255, 116, .22);
+    }
+
+    .profile-dialog-close:focus-visible {
+      outline: 2px solid #ffffff;
+      outline-offset: 3px;
     }
 
     @keyframes profile-bounce {
@@ -853,11 +900,6 @@
       text-shadow: 0 0 18px rgba(47, 200, 255, .42);
     }
 
-    #hosting-title {
-      color: var(--terminal-green);
-      text-shadow: 0 0 18px rgba(57, 255, 116, .42);
-    }
-
     .ai-stack-story .hosting-copy {
       color: #58bfff;
       text-shadow: 0 0 10px rgba(0, 168, 255, .18);
@@ -887,7 +929,7 @@
     }
 
     .hosting-layout--media-right {
-      grid-template-columns: minmax(0, 1fr) minmax(220px, 360px);
+      grid-template-columns: minmax(0, 1fr) minmax(220px, 300px);
       align-items: center;
     }
 
@@ -1392,27 +1434,12 @@
     }
 
     @media (max-width: 720px) {
-      .hosting-layout,
-      .hosting-layout--media-right {
-        grid-template-columns: 1fr !important;
+      .hosting-layout {
+        grid-template-columns: 1fr;
       }
 
-      .hosting-layout a.hosting-photo-link {
-        width: 100%;
+      a.hosting-photo-link {
         max-width: 360px;
-        height: auto !important;
-        align-self: auto !important;
-      }
-
-      .hosting-layout .hosting-photo {
-        width: 100% !important;
-        max-width: 100%;
-        height: auto !important;
-      }
-
-      .ai-stack-story .hosting-photo {
-        aspect-ratio: auto;
-        object-fit: contain;
       }
 
       .ai-chat-header {
@@ -1463,34 +1490,6 @@
       .page {
         width: min(100% - 24px, 1120px);
         padding-top: 18px;
-      }
-
-      .mobile-site-header {
-        display: block;
-        margin-bottom: 18px;
-        padding: 14px 16px;
-        border: 1px solid rgba(57, 255, 116, .34);
-        border-radius: 8px;
-        background: rgba(3, 12, 6, .9);
-        box-shadow:
-          0 12px 30px rgba(0, 0, 0, .34),
-          0 0 22px rgba(57, 255, 116, .12);
-      }
-
-      .mobile-site-header-name {
-        color: var(--terminal-green);
-        font-family: var(--display-font);
-        font-size: 1.2rem;
-        font-weight: 800;
-        line-height: 1.15;
-        text-shadow: 0 0 16px rgba(57, 255, 116, .42);
-      }
-
-      .mobile-site-header-title {
-        margin-top: 4px;
-        color: var(--muted);
-        font-size: .88rem;
-        font-weight: 600;
       }
 
       .nav {
@@ -1561,11 +1560,6 @@
 
 <body>
   <main class="page">
-
-    <header class="mobile-site-header">
-      <div class="mobile-site-header-name"><a href="mailto:recordstuff@hotmail.com">Brett Drake</a></div>
-      <div class="mobile-site-header-title">C#/.NET Software Developer Looking for Work</div>
-    </header>
 
     <nav class="nav" aria-label="Primary">
       <div class="nav-links">
@@ -1799,7 +1793,7 @@
                   I'm Brett Drake, a C#/.NET Software Developer Looking for Work
                 </h1>
                 <p>
-                  I am open to coding work of any kind.
+                  I really need some coding work of any kind.
                   If you have a development project you'd like help with, or something you'd like
                   to see added to this site, then <a href="mailto:recordstuff@hotmail.com">email me</a>.
                 </p>
@@ -1909,7 +1903,8 @@
       <div class="panel-inner">
 
         <div
-          class="hosting-layout hosting-layout--media-right">
+          class="hosting-layout hosting-layout--media-right"
+          style="grid-template-columns: minmax(0, 1fr) minmax(220px, 360px);">
 
           <div>
 
@@ -2052,6 +2047,13 @@
 
   </main>
 
+  <dialog class="profile-dialog" id="profileDialog">
+    <div class="profile-dialog-content">
+      <p class="profile-dialog-message" id="profileDialogMessage"></p>
+      <button class="profile-dialog-close" id="profileDialogClose" type="button">OK</button>
+    </div>
+  </dialog>
+
   <script>
     const aiChatPromptInput =
       document.getElementById("aiChatPrompt");
@@ -2077,6 +2079,25 @@
     const profilePhotoButton =
       document.getElementById("profilePhotoButton");
 
+    const profileDialog =
+      document.getElementById("profileDialog");
+
+    const profileDialogMessage =
+      document.getElementById("profileDialogMessage");
+
+    const profileDialogClose =
+      document.getElementById("profileDialogClose");
+
+    const profileMessages = [
+      "You have a very steady hand.",
+      "Ouch!",
+      "My head is a planet!",
+      "Thank you for your attention",
+      "Writing Solid Code is a good book.",
+      "Multiple monitors saved my life.",
+      "Touch typing in high school was second only to the Comp Sci courses I took.",
+      "My sincerest wishes for your wonderful day!"
+    ];
     let loadedModelName = "";
     let llmsterHasReplied = false;
 
@@ -2373,7 +2394,28 @@
     profilePhotoButton.addEventListener(
       "click",
       function () {
-        window.alert("You have a very steady hand.");
+        profileDialogMessage.textContent =
+          profileMessages[
+            Math.floor(Math.random() * profileMessages.length)
+          ];
+
+        profileDialog.showModal();
+      }
+    );
+
+    profileDialogClose.addEventListener(
+      "click",
+      function () {
+        profileDialog.close();
+      }
+    );
+
+    profileDialog.addEventListener(
+      "click",
+      function (event) {
+        if (event.target === profileDialog) {
+          profileDialog.close();
+        }
       }
     );
 
