@@ -13,7 +13,7 @@
 
   <meta property="og:site_name" content="Brett Drake">
   <meta property="og:type" content="profile">
-  <meta property="og:title" content="Brett Drake | C#/.NET Software Developer Seeking Roles">
+  <meta property="og:title" content="Brett Drake | C#/.NET Software Developer Seeking Work">
   <meta property="og:description" content="Portfolio for Brett Drake, an experienced C#/.NET developer with ASP.NET, Web API, Entity Framework, SQL Server, Azure, Blazor, Docker, Kubernetes, React, and TypeScript experience.">
   <meta property="og:url" content="https://brettdrake.org/">
   <meta property="og:image" content="https://brettdrake.org/brett.jpg">
@@ -22,7 +22,7 @@
   <meta property="profile:last_name" content="Drake">
 
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Brett Drake | C#/.NET Software Developer Seeking Roles">
+  <meta name="twitter:title" content="Brett Drake | C#/.NET Software Developer Seeking Work">
   <meta name="twitter:description" content="C#/.NET developer portfolio with ASP.NET, Web API, Entity Framework, SQL Server, Azure, Blazor, Docker, Kubernetes, React, and TypeScript experience.">
   <meta name="twitter:image" content="https://brettdrake.org/brett.jpg">
 
@@ -1438,12 +1438,27 @@
     }
 
     @media (max-width: 720px) {
-      .hosting-layout {
-        grid-template-columns: 1fr;
+      .hosting-layout,
+      .hosting-layout--media-right {
+        grid-template-columns: 1fr !important;
       }
 
-      a.hosting-photo-link {
+      .hosting-layout a.hosting-photo-link {
+        width: 100%;
         max-width: 360px;
+        height: auto !important;
+        align-self: auto !important;
+      }
+
+      .hosting-layout .hosting-photo {
+        width: 100% !important;
+        max-width: 100%;
+        height: auto !important;
+      }
+
+      .ai-stack-story .hosting-photo {
+        aspect-ratio: auto;
+        object-fit: contain;
       }
 
       .ai-chat-header {
