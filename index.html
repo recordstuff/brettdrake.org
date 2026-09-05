@@ -210,6 +210,10 @@
       border: 0;
     }
 
+    .mobile-site-header {
+      display: none;
+    }
+
     .nav {
       display: flex;
       align-items: center;
@@ -1461,6 +1465,34 @@
         padding-top: 18px;
       }
 
+      .mobile-site-header {
+        display: block;
+        margin-bottom: 18px;
+        padding: 14px 16px;
+        border: 1px solid rgba(57, 255, 116, .34);
+        border-radius: 8px;
+        background: rgba(3, 12, 6, .9);
+        box-shadow:
+          0 12px 30px rgba(0, 0, 0, .34),
+          0 0 22px rgba(57, 255, 116, .12);
+      }
+
+      .mobile-site-header-name {
+        color: var(--terminal-green);
+        font-family: var(--display-font);
+        font-size: 1.2rem;
+        font-weight: 800;
+        line-height: 1.15;
+        text-shadow: 0 0 16px rgba(57, 255, 116, .42);
+      }
+
+      .mobile-site-header-title {
+        margin-top: 4px;
+        color: var(--muted);
+        font-size: .88rem;
+        font-weight: 600;
+      }
+
       .nav {
         align-items: flex-start;
         flex-direction: column;
@@ -1529,6 +1561,11 @@
 
 <body>
   <main class="page">
+
+    <header class="mobile-site-header">
+      <div class="mobile-site-header-name">Brett Drake</div>
+      <div class="mobile-site-header-title">C#/.NET Software Developer Looking for Work</div>
+    </header>
 
     <nav class="nav" aria-label="Primary">
       <div class="nav-links">
