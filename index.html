@@ -817,11 +817,6 @@
       font-size: 1.15rem;
     }
 
-    #hosting-title {
-      color: var(--terminal-green);
-      text-shadow: 0 0 18px rgba(57, 255, 116, .42);
-    }
-
     .quiet {
       margin: 0;
       color: var(--muted);
@@ -893,7 +888,7 @@
       margin: 0;
     }
 
-    .ai-stack-story {
+    .blue-story {
       border-color: rgba(47, 200, 255, .48);
       background:
         radial-gradient(circle at 92% 0%, rgba(0, 168, 255, .2), transparent 34%),
@@ -904,17 +899,17 @@
         inset 0 1px 0 rgba(47, 200, 255, .11);
     }
 
-    .ai-stack-story h2 {
+    .blue-story h2 {
       color: #5fd8ff;
       text-shadow: 0 0 18px rgba(47, 200, 255, .42);
     }
 
-    .ai-stack-story .hosting-copy {
+    .blue-story .hosting-copy {
       color: #58bfff;
       text-shadow: 0 0 10px rgba(0, 168, 255, .18);
     }
 
-    .ai-stack-story .hosting-copy a {
+    .blue-story .hosting-copy a {
       color: #66e3ff;
       background:
         linear-gradient(90deg, #66e3ff, #0038ff) 0 100% / 100% 2px no-repeat,
@@ -922,12 +917,32 @@
       text-shadow: 0 0 12px rgba(47, 200, 255, .38);
     }
 
-    .ai-stack-story .hosting-copy a:hover {
+    .blue-story .hosting-copy a:hover {
       color: #9beeff;
       background-size: 100% 5px, 100% 11px;
       text-shadow:
         0 0 12px rgba(102, 227, 255, .72),
         0 0 22px rgba(0, 168, 255, .42);
+    }
+
+    .green-story {
+      border-color: rgba(57, 255, 116, .28);
+      background:
+        radial-gradient(circle at 92% 0%, rgba(57, 255, 116, .12), transparent 34%),
+        linear-gradient(135deg, rgba(7, 17, 11, .96), rgba(2, 8, 4, .96));
+      box-shadow:
+        0 18px 46px rgba(0, 0, 0, .4),
+        0 0 32px rgba(57, 255, 116, .08),
+        inset 0 1px 0 rgba(57, 255, 116, .11);
+    }
+
+    .green-story h2 {
+      color: var(--terminal-green);
+      text-shadow: 0 0 18px rgba(57, 255, 116, .42);
+    }
+
+    .green-story .hosting-copy {
+      color: var(--muted);
     }
 
     .hosting-layout {
@@ -966,14 +981,14 @@
       transform: translateY(-2px);
     }
 
-    .ai-stack-story a.hosting-photo-link {
+    .blue-story a.hosting-photo-link {
       border-color: rgba(47, 200, 255, .58);
       box-shadow:
         0 16px 34px rgba(0, 0, 0, .42),
         0 0 22px rgba(0, 168, 255, .14);
     }
 
-    .ai-stack-story a.hosting-photo-link:hover {
+    .blue-story a.hosting-photo-link:hover {
       border-color: #66e3ff;
       box-shadow:
         0 20px 40px rgba(0, 0, 0, .46),
@@ -990,6 +1005,12 @@
       aspect-ratio: 4 / 3;
       object-fit: cover;
       object-position: center 32%;
+    }
+
+    .ai-development-story .hosting-photo {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
     }
 
     footer {
@@ -1719,7 +1740,6 @@
             Ask the local model about Brett or anything else.
           </strong>
 
-
         </div>
       </div>
 
@@ -1846,26 +1866,26 @@
         </svg>
 
         <div class="hosting-copy">
-                <h1>
-                  I'm Brett Drake, a C#/.NET Software Developer Looking for Work
-                </h1>
-                <p>
-                  I really need some coding work of any kind.
-                  If you have a development project you'd like help with, or something you'd like
-                  to see added to this site, then <a href="mailto:recordstuff@hotmail.com">email me</a>.
-                </p>
-                <p>
-                  I originally wrote
-                  <a href="https://github.com/recordstuff/OutlookJunkEmailCleaner" target="_blank" rel="noopener">OutlookJunkEmailCleaner</a>
-                  for fun as a reaction against spammers, but it turned out to have real value for me.
-                  Building it helped me learn more about how the spam operations behind those messages work.
-                  Most importantly, it gave me back control of my Outlook junk-email folder.
-                </p>
-                <p>
-                  You can also find me on
-                  <a href="https://stackoverflow.com/users/5003910/brett-drake" target="_blank" rel="noopener">Stack Overflow</a>
-                  and <a href="https://www.linkedin.com/in/brettbdrake/" target="_blank" rel="noopener">LinkedIn</a>.
-                </p>
+          <h1>
+            I'm Brett Drake, a C#/.NET Software Developer Looking for Work
+          </h1>
+          <p>
+            I really need some coding work of any kind.
+            If you have a development project you'd like help with, or something you'd like
+            to see added to this site, then <a href="mailto:recordstuff@hotmail.com">email me</a>.
+          </p>
+          <p>
+            I originally wrote
+            <a href="https://github.com/recordstuff/OutlookJunkEmailCleaner" target="_blank" rel="noopener">OutlookJunkEmailCleaner</a>
+            for fun as a reaction against spammers, but it turned out to have real value for me.
+            Building it helped me learn more about how the spam operations behind those messages work.
+            Most importantly, it gave me back control of my Outlook junk-email folder.
+          </p>
+          <p>
+            You can also find me on
+            <a href="https://stackoverflow.com/users/5003910/brett-drake" target="_blank" rel="noopener">Stack Overflow</a>
+            and <a href="https://www.linkedin.com/in/brettbdrake/" target="_blank" rel="noopener">LinkedIn</a>.
+          </p>
         </div>
 
       </div>
@@ -1953,8 +1973,63 @@
     </section>
 
     <section
+      class="panel hosting-story blue-story ai-development-story"
+      aria-labelledby="ai-development-title">
+
+      <div class="panel-inner">
+
+        <div class="hosting-layout hosting-layout--media-right">
+
+          <div>
+
+            <h2 id="ai-development-title">
+              AI-Assisted Development
+            </h2>
+
+            <div class="hosting-copy">
+
+              <p>
+                I was an early adopter of ChatGPT once it became good enough to write code.
+              </p>
+
+              <p>
+                I now use Codex efficiently to produce not just working functionality,
+                but clean, maintainable code.
+              </p>
+
+              <p>
+                Codex writes mediocre code by default. Keeping it in PR mode and reviewing
+                every line, I can force it to meet my much higher standards.
+              </p>
+
+              <p>
+                AI makes me faster, but I still control the code.
+              </p>
+
+            </div>
+          </div>
+
+          <a
+            class="hosting-photo-link"
+            href="JWTBackendGuts.png"
+            target="_blank"
+            rel="noopener"
+            aria-label="View the full-resolution JWT backend code image in a new tab">
+
+            <img
+              class="hosting-photo"
+              src="JWTBackendGuts.png"
+              alt="JWT backend code">
+
+          </a>
+
+        </div>
+      </div>
+    </section>
+
+    <section
       id="ai-stack"
-      class="panel hosting-story ai-stack-story"
+      class="panel hosting-story green-story ai-stack-story"
       aria-labelledby="ai-stack-title">
 
       <div class="panel-inner">
@@ -1989,9 +2064,9 @@
               <p>
                 I initially configured <code>google/gemma-4-e4b</code> with its
                 <a
-  href="https://lmstudio.ai/models/google/gemma-4-e4b"
-  target="_blank"
-  rel="noopener"><strong>Enable Thinking</strong></a> option turned on. Although the model
+                  href="https://lmstudio.ai/models/google/gemma-4-e4b"
+                  target="_blank"
+                  rel="noopener"><strong>Enable Thinking</strong></a> option turned on. Although the model
                 supports reasoning, the additional thinking produced extremely long
                 response delays in my setup, so I disabled it for this application.
               </p>
@@ -2027,7 +2102,7 @@
     </section>
 
     <section
-      class="panel hosting-story"
+      class="panel hosting-story blue-story"
       aria-labelledby="hosting-title">
 
       <div class="panel-inner">
