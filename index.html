@@ -2006,12 +2006,16 @@
               </p>
 
               <p>
-                Codex writes mediocre code by default. Keeping it in PR mode and reviewing
-                every line, I can force it to meet my much higher standards.
+                Codex writes mediocre code by default regardless of the model or time spent. Keeping it in PR mode and reviewing
+                every line, I can force it to meet my much higher standards and ask it to remember aspects of those standards.  Also, I can just let it update the local directory and use diffs to
+                guard against unwanted changes.  There is value in both methods--PR or local directory diffs.  That feels like more of an organizational 
+                decision based on how a company wants to operate.
               </p>
 
               <p>
-                Although AI makes me faster, I still must oversee and guide the development.
+                Although AI makes me faster, I still must oversee and guide the development.  One thing that happened recently was I said "Fix the eslint issues", 
+                and it took away await and replaced it with promise chains.  This was a documented eslint false positive.  I pushed back, and it then fixed it correctly, 
+                preserving my original async await style.
               </p>
 
             </div>
