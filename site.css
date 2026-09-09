@@ -10,7 +10,7 @@ body {
   padding: clamp(24px, 6vw, 80px) clamp(16px, 5vw, 64px);
   color: #352f27;
   background-color: #eee8dd;
-  background-image: url("cream-marble.png");
+  background-image: url("images/cream-marble.png");
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -20,6 +20,7 @@ body {
 
 .button-blue {
   display: inline-flex;
+  gap: 10px;
   align-items: center;
   justify-content: center;
   padding: 10px 18px;
@@ -36,6 +37,17 @@ body {
     border-color .15s ease,
     color .15s ease,
     box-shadow .15s ease;
+}
+
+.button-icon {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  object-fit: contain;
+}
+
+.button-icon-wide {
+  width: 54px;
 }
 
 .button-blue:hover {
@@ -58,8 +70,8 @@ body {
 }
 
 .link-stack {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 23rem), 1fr));
   gap: 10px;
 }
 
@@ -67,10 +79,13 @@ body {
   max-width: 760px;
   margin: 0 auto;
   padding: 18px clamp(18px, 3vw, 32px);
-  border: 1px solid #8b9b80;
   border-radius: 8px;
   background-color: #fffefa;
   box-shadow: 0 8px 24px rgba(73, 87, 61, .08);
+}
+
+.paper-note {
+  border: 1px solid #8b9b80;
 }
 
 .paper-note + .paper-note {
@@ -94,6 +109,30 @@ body {
   margin-bottom: 0;
 }
 
+.introduction {
+  display: flex;
+  align-items: flex-start;
+  gap: 24px;
+}
+
+.profile-photo {
+  box-sizing: border-box;
+  border: 1px solid #f5b991;
+  width: 144px;
+  height: 144px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center 34%;
+}
+
+@media (max-width: 540px) {
+  .introduction {
+    flex-direction: column;
+    gap: 16px;
+  }
+}
+
 .construction-icon {
   width: 28px;
   height: 28px;
@@ -101,16 +140,16 @@ body {
   vertical-align: middle;
 }
 
-.paper-note a {
+.paper-note a:not(.button-blue) {
   color: #46613e;
   text-underline-offset: .18em;
 }
 
-.paper-note a:hover {
+.paper-note a:not(.button-blue):hover {
   color: #2d4427;
 }
 
-.paper-note a:focus-visible {
+.paper-note a:not(.button-blue):focus-visible {
   outline: 2px solid #46613e;
   outline-offset: 4px;
 }
