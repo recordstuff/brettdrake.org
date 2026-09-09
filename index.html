@@ -79,6 +79,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Literata:wght@400;600&amp;display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="site.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/marked@18.0.11/lib/marked.umd.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/dompurify@3.4.14/dist/purify.min.js"></script>
+  <script defer src="aichat.js"></script>
 </head>
 
 <body>
@@ -145,8 +148,23 @@
         LinkedIn
       </a>
     </div>
-    <h2>AI-Native Chat Assistant</h2>
   </div>
+  <section class="paper-note ai-chat" aria-labelledby="ai-chat-title">
+    <h2 id="ai-chat-title">AI-Native Chat Assistant</h2>
+    <p>Ask about Brett or anything else. AI responses may contain mistakes.</p>
+    <p class="ai-chat-status" id="aiChatStatusText" role="status">Ready</p>
+    <div class="ai-chat-messages" id="aiChatMessages" role="log" aria-label="Conversation" aria-live="polite" aria-relevant="additions" tabindex="0"></div>
+    <form id="aiChatForm" class="ai-chat-form">
+      <label for="aiChatPrompt">Your message</label>
+      <textarea id="aiChatPrompt" rows="3" required aria-describedby="aiChatHint"></textarea>
+      <small id="aiChatHint">Enter to send. Shift+Enter for a new line.</small>
+      <div class="ai-chat-actions">
+        <button class="button-blue" id="aiChatSendButton" type="submit">Send</button>
+        <button class="button-blue" id="aiChatStopButton" type="button" hidden>Stop</button>
+      </div>
+    </form>
+    <noscript>Enable JavaScript to use the chat.</noscript>
+  </section>
   <div class="paper-note">
     <h3>The "Fun" Version of the Site</h3>
     <p>
