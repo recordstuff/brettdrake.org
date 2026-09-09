@@ -10,9 +10,7 @@ body {
   padding: clamp(24px, 6vw, 80px) clamp(16px, 5vw, 64px);
   color: #352f27;
   background-color: #eee8dd;
-  background-image:
-    linear-gradient(rgba(250, 247, 239, .76), rgba(250, 247, 239, .76)),
-    url("cream-marble.png");
+  background-image: url("cream-marble.png");
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
