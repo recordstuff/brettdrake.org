@@ -86,7 +86,7 @@
 
       updateChangeModelButton();
     } catch (error) {
-      setModelStatus("Loaded model: Unable to check", "error");
+      setModelStatus("Loaded model: Unable to determine", "error");
       console.error("Chat model information is unavailable.", error);
     } finally {
       clearTimeout(timer);
