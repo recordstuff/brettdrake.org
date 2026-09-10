@@ -385,10 +385,6 @@ body {
   margin-top: 20px;
 }
 
-.ai-chat-form small {
-  color: #526b80;
-}
-
 .ai-chat-actions {
   display: flex;
   gap: 10px;
