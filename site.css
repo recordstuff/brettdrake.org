@@ -4,6 +4,8 @@ html {
 }
 
 body {
+  --status-font: "IBM Plex Mono", monospace;
+
   box-sizing: border-box;
   min-height: 100vh;
   margin: 0;
@@ -166,9 +168,6 @@ body {
   border-radius: 999px;
   background: #f5f9fc;
   color: #476b85;
-  font-family: var(--status-font);
-  font-size: .8rem;
-  letter-spacing: .02em;
 }
 
 .ai-chat-status::before {
@@ -181,8 +180,6 @@ body {
 }
 
 .paper-note.ai-chat {
-  --status-font: ui-monospace, "Cascadia Mono", Consolas, monospace;
-
   background: #fff;
   box-shadow: 0 8px 24px rgb(83 104 120 / 7%);
 }
@@ -228,9 +225,6 @@ body {
   border-radius: 999px;
   background: #f5f9fc;
   color: #526b80;
-  font-family: var(--status-font);
-  font-size: .8rem;
-  letter-spacing: .02em;
 }
 
 .ai-chat-model-status[data-state="checking"] {
@@ -360,8 +354,13 @@ body {
   outline-offset: 2px;
 }
 
+.ai-chat-status,
+.ai-chat-model-status,
 .ai-chat-model-picker :is(select, button) {
   font-family: var(--status-font);
+  font-size: .8rem;
+  font-weight: 500;
+  letter-spacing: .02em;
 }
 
 .site-dialog {
@@ -372,7 +371,7 @@ body {
   background: #fffefa;
   color: #352f27;
   box-shadow: 0 12px 32px rgb(53 47 39 / 18%);
-  font-family: inherit;
+  font-family: var(--status-font);
 }
 
 .site-dialog::backdrop {
