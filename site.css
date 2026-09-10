@@ -182,6 +182,15 @@ body {
   flex: 1;
 }
 
+.ai-chat-model-picker button:disabled {
+  border-color: #d4d8db;
+  background: #eef0f1;
+  color: #8a9298;
+  box-shadow: none;
+  cursor: not-allowed;
+  opacity: 1;
+}
+
 .ai-chat-model-status {
   display: flex;
   min-height: 1.6em;
