@@ -182,6 +182,7 @@ body {
 .paper-note.ai-chat {
   background: #fff;
   box-shadow: 0 8px 24px rgb(83 104 120 / 7%);
+  font-family: var(--status-font);
 }
 
 .ai-chat-model-controls {
