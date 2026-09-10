@@ -192,6 +192,10 @@ body {
   margin-top: 16px;
 }
 
+.ai-chat-model-controls + .ai-chat-status {
+  margin-top: 12px;
+}
+
 .ai-chat-model-picker {
   display: flex;
   gap: 10px;
