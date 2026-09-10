@@ -151,7 +151,20 @@
   </div>
   <section class="paper-note ai-chat" aria-labelledby="ai-chat-title">
     <h2 id="ai-chat-title">AI-Native Chat Assistant</h2>
-    <p>Ask about Brett or anything else. AI responses may contain mistakes.</p>
+    <p>Ask about Brett or anything else.</p>
+    <div class="ai-chat-model-controls">
+      <label for="aiChatModelSelect">Language model</label>
+      <div class="ai-chat-model-picker">
+        <select id="aiChatModelSelect" disabled>
+          <option value="">Select a model</option>
+        </select>
+        <button class="button-blue" id="aiChatChangeModelButton" type="button" disabled>Change model</button>
+      </div>
+      <p class="ai-chat-model-status" id="aiChatModelStatus" role="status" data-state="checking">
+        <span class="ai-chat-spinner" id="aiChatModelSpinner" aria-hidden="true"></span>
+        <span id="aiChatModelStatusText">Loaded model: Checking…</span>
+      </p>
+    </div>
     <p class="ai-chat-status" id="aiChatStatusText" role="status">Ready</p>
     <div class="ai-chat-messages" id="aiChatMessages" role="log" aria-label="Conversation" aria-live="polite" aria-relevant="additions" tabindex="0"></div>
     <form id="aiChatForm" class="ai-chat-form">
@@ -165,6 +178,16 @@
     </form>
     <noscript>Enable JavaScript to use the chat.</noscript>
   </section>
+  <dialog class="ai-chat-dialog" id="aiChatModelDialog" aria-labelledby="aiChatModelDialogTitle">
+    <form method="dialog">
+      <h3 id="aiChatModelDialogTitle">Change language model</h3>
+      <p id="aiChatModelDialogMessage"></p>
+      <div class="ai-chat-dialog-actions">
+        <button class="button-blue" type="submit" value="cancel">Cancel</button>
+        <button class="button-blue" id="aiChatConfirmModelButton" type="submit" value="confirm">Load model</button>
+      </div>
+    </form>
+  </dialog>
   <div class="paper-note">
     <h3>The "Fun" Version of the Site</h3>
     <p>

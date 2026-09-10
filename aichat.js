@@ -7,29 +7,125 @@
   const aiChatSendButton = document.getElementById("aiChatSendButton");
   const aiChatStopButton = document.getElementById("aiChatStopButton");
   const aiChatStatusText = document.getElementById("aiChatStatusText");
-  let loadedModelName = "";
+  const aiChatModelSelect = document.getElementById("aiChatModelSelect");
+  const aiChatChangeModelButton = document.getElementById("aiChatChangeModelButton");
+  const aiChatModelStatus = document.getElementById("aiChatModelStatus");
+  const aiChatModelStatusText = document.getElementById("aiChatModelStatusText");
+  const aiChatModelSpinner = document.getElementById("aiChatModelSpinner");
+  const aiChatModelDialog = document.getElementById("aiChatModelDialog");
+  const aiChatModelDialogMessage = document.getElementById("aiChatModelDialogMessage");
+  const aiChatConfirmModelButton = document.getElementById("aiChatConfirmModelButton");
+  let loadedModelKey = "";
+  let modelChangeInProgress = false;
   let activeRequest = null;
 
-  async function loadModelName() {
+  function setModelStatus(message, state, isLoading = false) {
+    aiChatModelStatusText.textContent = message;
+    aiChatModelStatus.dataset.state = state;
+    aiChatModelSpinner.hidden = !isLoading;
+  }
+
+  function updateChangeModelButton() {
+    const selectedModelKey = aiChatModelSelect.value;
+    let modelChanged = selectedModelKey !== loadedModelKey;
+    if (!loadedModelKey) {
+      modelChanged = Boolean(selectedModelKey);
+    }
+
+    aiChatChangeModelButton.disabled =
+      aiChatModelSelect.disabled
+      || modelChangeInProgress
+      || Boolean(activeRequest)
+      || !modelChanged;
+  }
+
+  async function loadModelOptions() {
     const controller = new AbortController();
     const timer = setTimeout(() => controller.abort(), 10000);
+    aiChatModelSelect.disabled = true;
+    aiChatChangeModelButton.disabled = true;
+    setModelStatus("Loaded model: Checking…", "checking", true);
+
     try {
-      const response = await fetch(endpoint, {
+      const modelsResponse = await fetch(`${endpoint}/availablemodels`, {
         credentials: "include",
         signal: controller.signal
       });
-      if (!response.ok) {
+      if (!modelsResponse.ok) {
+        throw new Error(`Model list request failed: ${modelsResponse.status}`);
+      }
+
+      const availableModels = await modelsResponse.json();
+      aiChatModelSelect.replaceChildren();
+      for (const modelKey of availableModels) {
+        const option = document.createElement("option");
+        option.value = modelKey;
+        option.textContent = modelKey;
+        aiChatModelSelect.append(option);
+      }
+
+      if (!availableModels.length) {
+        setModelStatus("Loaded model: No language models are available.", "error");
         return;
       }
-      loadedModelName = (await response.text()).trim();
-      if (loadedModelName && !activeRequest) {
-        aiChatStatusText.textContent = `Model: ${loadedModelName}`;
+
+      aiChatModelSelect.disabled = false;
+      const loadedResponse = await fetch(endpoint, {
+        credentials: "include",
+        signal: controller.signal
+      });
+
+      loadedModelKey = "";
+      if (loadedResponse.ok) {
+        loadedModelKey = (await loadedResponse.text()).trim();
+        aiChatModelSelect.value = loadedModelKey;
+        setModelStatus(`Loaded model: ${loadedModelKey}`, "loaded");
+      } else {
+        setModelStatus("Loaded model: None", "checking");
       }
+
+      updateChangeModelButton();
     } catch (error) {
-      // Model information is optional; users can still send a message.
-      console.warn("Chat model information is unavailable.", error);
+      setModelStatus("Loaded model: Unable to check", "error");
+      console.error("Chat model information is unavailable.", error);
     } finally {
       clearTimeout(timer);
+      aiChatModelSpinner.hidden = true;
+    }
+  }
+
+  async function changeModel() {
+    const selectedModelKey = aiChatModelSelect.value;
+    modelChangeInProgress = true;
+    aiChatModelSelect.disabled = true;
+    aiChatSendButton.disabled = true;
+    updateChangeModelButton();
+    setModelStatus(`Loading model: ${selectedModelKey}…`, "loading", true);
+
+    try {
+      const response = await fetch(`${endpoint}/loadedmodel`, {
+        method: "PUT",
+        credentials: "include",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(selectedModelKey)
+      });
+      if (!response.ok) {
+        throw new Error(`Model change request failed: ${response.status}`);
+      }
+
+      loadedModelKey = (await response.text()).trim();
+      aiChatModelSelect.value = loadedModelKey;
+      setModelStatus(`Loaded model: ${loadedModelKey}`, "loaded");
+    } catch (error) {
+      aiChatStatusText.textContent = "Unable to change the language model.";
+      console.error("Unable to change the language model.", error);
+      await loadModelOptions();
+    } finally {
+      modelChangeInProgress = false;
+      aiChatModelSelect.disabled = false;
+      aiChatSendButton.disabled = false;
+      aiChatModelSpinner.hidden = true;
+      updateChangeModelButton();
     }
   }
 
@@ -73,6 +169,7 @@
     activeRequest = controller;
     aiChatSendButton.disabled = true;
     aiChatStopButton.hidden = false;
+    updateChangeModelButton();
     aiChatStatusText.textContent = "Thinking…";
     addAiChatMessage("user", prompt);
     aiChatPromptInput.value = "";
@@ -129,9 +226,6 @@
       }
       renderReply(assistantMessage.bubble, fullResponse);
       aiChatStatusText.textContent = "Ready";
-      if (loadedModelName) {
-        aiChatStatusText.textContent = `Model: ${loadedModelName}`;
-      }
     } catch (error) {
       let message = "Unable to get a reply. Please try again.";
       if (controller.signal.aborted) {
@@ -157,6 +251,7 @@
       activeRequest = null;
       aiChatSendButton.disabled = false;
       aiChatStopButton.hidden = true;
+      updateChangeModelButton();
       scrollAiChatToBottom();
       aiChatPromptInput.focus({ preventScroll: true });
     }
@@ -177,5 +272,22 @@
       activeRequest.abort();
     }
   });
-  loadModelName();
+  aiChatModelSelect.addEventListener("change", updateChangeModelButton);
+  aiChatChangeModelButton.addEventListener("click", () => {
+    const selectedModelKey = aiChatModelSelect.value;
+    aiChatModelDialogMessage.textContent =
+      `Load model “${selectedModelKey}”? This could take several minutes.`;
+    aiChatModelDialog.showModal();
+  });
+  aiChatConfirmModelButton.addEventListener("click", event => {
+    event.preventDefault();
+    aiChatModelDialog.close();
+    changeModel();
+  });
+  aiChatModelDialog.addEventListener("click", event => {
+    if (event.target === aiChatModelDialog) {
+      aiChatModelDialog.close();
+    }
+  });
+  loadModelOptions();
 })();
