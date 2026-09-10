@@ -356,6 +356,7 @@ body {
 }
 
 .ai-chat-model-controls > label,
+.ai-chat-form > label,
 .ai-chat-status,
 .ai-chat-model-status,
 .ai-chat-model-picker :is(select, button) {
