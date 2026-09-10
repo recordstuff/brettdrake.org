@@ -1,36 +1,16 @@
 "use strict";
 
 (() => {
-  const endpoint = "https://brettdrake.org:8080/Chat";
+  const endpoint = document.getElementById("aiChat").dataset.endpoint;
   const aiChatPromptInput = document.getElementById("aiChatPrompt");
   const aiChatMessages = document.getElementById("aiChatMessages");
   const aiChatSendButton = document.getElementById("aiChatSendButton");
   const aiChatStopButton = document.getElementById("aiChatStopButton");
   const aiChatStatusText = document.getElementById("aiChatStatusText");
-  let loadedModelName = "";
   let activeRequest = null;
 
-  async function loadModelName() {
-    const controller = new AbortController();
-    const timer = setTimeout(() => controller.abort(), 10000);
-    try {
-      const response = await fetch(endpoint, {
-        credentials: "include",
-        signal: controller.signal
-      });
-      if (!response.ok) {
-        return;
-      }
-      loadedModelName = (await response.text()).trim();
-      if (loadedModelName && !activeRequest) {
-        aiChatStatusText.textContent = `Model: ${loadedModelName}`;
-      }
-    } catch (error) {
-      // Model information is optional; users can still send a message.
-      console.warn("Chat model information is unavailable.", error);
-    } finally {
-      clearTimeout(timer);
-    }
+  function setChatActive(isActive) {
+    document.dispatchEvent(new CustomEvent("ai-chat-active", { detail: isActive }));
   }
 
   function scrollAiChatToBottom() {
@@ -73,6 +53,7 @@
     activeRequest = controller;
     aiChatSendButton.disabled = true;
     aiChatStopButton.hidden = false;
+    setChatActive(true);
     aiChatStatusText.textContent = "Thinking…";
     addAiChatMessage("user", prompt);
     aiChatPromptInput.value = "";
@@ -129,9 +110,6 @@
       }
       renderReply(assistantMessage.bubble, fullResponse);
       aiChatStatusText.textContent = "Ready";
-      if (loadedModelName) {
-        aiChatStatusText.textContent = `Model: ${loadedModelName}`;
-      }
     } catch (error) {
       let message = "Unable to get a reply. Please try again.";
       if (controller.signal.aborted) {
@@ -157,6 +135,7 @@
       activeRequest = null;
       aiChatSendButton.disabled = false;
       aiChatStopButton.hidden = true;
+      setChatActive(false);
       scrollAiChatToBottom();
       aiChatPromptInput.focus({ preventScroll: true });
     }
@@ -177,5 +156,4 @@
       activeRequest.abort();
     }
   });
-  loadModelName();
 })();

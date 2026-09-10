@@ -76,12 +76,14 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Literata:wght@400;600&amp;display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&amp;family=Literata:wght@400;600&amp;display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="site.css">
   <script defer src="https://cdn.jsdelivr.net/npm/marked@18.0.11/lib/marked.umd.js"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/dompurify@3.4.14/dist/purify.min.js"></script>
-  <script defer src="aichat.js"></script>
+  <script defer src="js/dialog.js"></script>
+  <script defer src="js/modelselector.js"></script>
+  <script defer src="js/aichat.js"></script>
 </head>
 
 <body>
@@ -149,15 +151,26 @@
       </a>
     </div>
   </div>
-  <section class="paper-note ai-chat" aria-labelledby="ai-chat-title">
+  <section class="paper-note ai-chat" id="aiChat" data-endpoint="https://brettdrake.org:8080/Chat" aria-labelledby="ai-chat-title">
     <h2 id="ai-chat-title">AI-Native Chat Assistant</h2>
-    <p>Ask about Brett or anything else. AI responses may contain mistakes.</p>
+    <div class="ai-chat-model-controls">
+      <label for="aiChatModelSelect">Language model</label>
+      <div class="ai-chat-model-picker">
+        <select id="aiChatModelSelect" disabled>
+          <option value="">Select a model</option>
+        </select>
+        <button class="button-blue" id="aiChatChangeModelButton" type="button" disabled>Change model</button>
+      </div>
+      <p class="ai-chat-model-status" id="aiChatModelStatus" role="status" data-state="checking">
+        <span class="loading-spinner" id="modelLoadingSpinner" aria-hidden="true"></span>
+        <span id="aiChatModelStatusText">Loaded model: Checking…</span>
+      </p>
+    </div>
     <p class="ai-chat-status" id="aiChatStatusText" role="status">Ready</p>
     <div class="ai-chat-messages" id="aiChatMessages" role="log" aria-label="Conversation" aria-live="polite" aria-relevant="additions" tabindex="0"></div>
     <form id="aiChatForm" class="ai-chat-form">
       <label for="aiChatPrompt">Your message</label>
-      <textarea id="aiChatPrompt" rows="3" required aria-describedby="aiChatHint"></textarea>
-      <small id="aiChatHint">Enter to send. Shift+Enter for a new line.</small>
+      <textarea id="aiChatPrompt" rows="3" required></textarea>
       <div class="ai-chat-actions">
         <button class="button-blue" id="aiChatSendButton" type="submit">Send</button>
         <button class="button-blue" id="aiChatStopButton" type="button" hidden>Stop</button>
@@ -168,11 +181,20 @@
   <div class="paper-note">
     <h3>The "Fun" Version of the Site</h3>
     <p>
-      <img class="construction-icon" src="images/under-construction.svg" alt="" width="28" height="28">
-      This site is continually under construction.  To see what was here before, go to the fully implemented <a href="funsite/">fun version</a>.  
-      It was the original brettdrake.org but I was told it made me look like a hobbyist instead of a professional.  
+      To see what was here before, go to the fully implemented <a href="funsite/">fun version</a>.
+      It was the original brettdrake.org but I was told it made me look like a hobbyist instead of a professional.
       The focus needs to be on the backend, frontends, and ai chat.
     </p>
   </div>
+  <dialog class="site-dialog" id="confirmationDialog" aria-labelledby="confirmationDialogTitle">
+    <form method="dialog">
+      <h3 id="confirmationDialogTitle"></h3>
+      <p id="confirmationDialogMessage"></p>
+      <div class="site-dialog-actions">
+        <button class="button-blue" id="confirmationDialogCancelButton" type="submit">Cancel</button>
+        <button class="button-blue" id="confirmationDialogConfirmButton" type="submit">Confirm</button>
+      </div>
+    </form>
+  </dialog>
 </body>
 </html>
