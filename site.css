@@ -157,17 +157,17 @@ body {
 .ai-chat-status {
   display: inline-flex;
   width: fit-content;
-  min-height: 28px;
+  min-height: 34px;
   align-items: center;
   gap: 7px;
   box-sizing: border-box;
-  padding: 4px 10px;
+  padding: 6px 12px;
   border: 1px solid #cbdce8;
   border-radius: 999px;
   background: #f5f9fc;
   color: #476b85;
   font-family: ui-monospace, "Cascadia Mono", Consolas, monospace;
-  font-size: .75rem;
+  font-size: .8rem;
   letter-spacing: .02em;
 }
 
@@ -188,7 +188,7 @@ body {
 
 .ai-chat-model-controls {
   display: grid;
-  gap: 8px;
+  gap: 12px;
   margin-top: 16px;
 }
 
@@ -218,17 +218,17 @@ body {
 .ai-chat-model-status {
   display: flex;
   width: fit-content;
-  min-height: 28px;
+  min-height: 34px;
   align-items: center;
   gap: 8px;
   box-sizing: border-box;
-  padding: 4px 10px;
+  padding: 6px 12px;
   border: 1px solid #cbdce8;
   border-radius: 999px;
   background: #f5f9fc;
   color: #526b80;
   font-family: ui-monospace, "Cascadia Mono", Consolas, monospace;
-  font-size: .75rem;
+  font-size: .8rem;
   letter-spacing: .02em;
 }
 
