@@ -156,9 +156,9 @@ body {
   position: relative;
   width: fit-content;
   max-width: 88%;
-  padding: 12px 14px;
+  padding: 12px 16px;
   border: 1px solid #e1e7eb;
-  border-radius: 10px 10px 10px 3px;
+  border-radius: 7px 18px 18px;
   background: #fff;
   color: #2f2b25;
   line-height: 1.65;
@@ -168,7 +168,7 @@ body {
 
 .ai-chat-message-bubble::after {
   position: absolute;
-  bottom: 10px;
+  top: 10px;
   left: -6px;
   width: 10px;
   height: 10px;
@@ -181,7 +181,7 @@ body {
 
 .ai-chat-user .ai-chat-message-bubble {
   border-color: #c9dbe7;
-  border-radius: 10px 10px 3px;
+  border-radius: 18px 7px 18px 18px;
   background: linear-gradient(135deg, #f3f8fb, #e8f1f7);
 }
 
