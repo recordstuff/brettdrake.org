@@ -5,6 +5,8 @@ html {
 
 body {
   box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
   min-height: 100vh;
   margin: 0;
   padding: clamp(24px, 6vw, 80px) clamp(16px, 5vw, 64px);
@@ -17,6 +19,14 @@ body {
   background-attachment: fixed;
   font-family: "Literata", serif;
   line-height: 1.6;
+}
+
+.home-page {
+  padding-bottom: 0;
+}
+
+.site-content {
+  width: 100%;
 }
 
 .button-blue {
@@ -99,7 +109,7 @@ body {
 }
 
 .paper-note :is(h1, h2, h3) {
-  margin: 16px 0 12px;
+  margin: 28px 0 16px;
   line-height: 1.25;
 }
 
@@ -147,4 +157,29 @@ body {
 .paper-note a:not(.button-blue):focus-visible {
   outline: 2px solid #46613e;
   outline-offset: 4px;
+}
+
+.site-footer {
+  box-sizing: border-box;
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: auto;
+  padding: 32px 0 12px;
+  color: #526b80;
+  font-size: .8rem;
+}
+
+.site-footer a {
+  color: #46613e;
+  text-underline-offset: .18em;
+}
+
+@media (max-width: 540px) {
+  .site-footer {
+    align-items: flex-start;
+    flex-direction: column;
+  }
 }
