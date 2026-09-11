@@ -25,6 +25,10 @@ body {
   padding-bottom: 0;
 }
 
+.home-page .paper-note {
+  padding-bottom: 22px;
+}
+
 .site-content {
   width: 100%;
 }
