@@ -84,13 +84,10 @@ body {
   max-width: 760px;
   margin: 0 auto;
   padding: 18px clamp(18px, 3vw, 32px);
+  border: 1px solid #dbe2d7;
   border-radius: 8px;
   background-color: #fffefa;
   box-shadow: 0 8px 24px rgba(73, 87, 61, .08);
-}
-
-.paper-note {
-  border: 1px solid #dbe2d7;
 }
 
 .paper-note + .paper-note {
