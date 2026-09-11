@@ -168,13 +168,15 @@ body {
 
 .ai-chat-message-bubble::after {
   position: absolute;
-  bottom: 8px;
-  left: -7px;
-  width: 8px;
-  height: 12px;
+  bottom: 10px;
+  left: -6px;
+  width: 10px;
+  height: 10px;
+  border-bottom: 1px solid #e1e7eb;
+  border-left: 1px solid #e1e7eb;
   background: #fff;
-  clip-path: polygon(100% 0, 100% 100%, 0 100%);
   content: "";
+  transform: rotate(45deg);
 }
 
 .ai-chat-user .ai-chat-message-bubble {
@@ -184,10 +186,12 @@ body {
 }
 
 .ai-chat-user .ai-chat-message-bubble::after {
-  right: -7px;
+  right: -6px;
   left: auto;
+  border: 0;
+  border-top: 1px solid #c9dbe7;
+  border-right: 1px solid #c9dbe7;
   background: #e8f1f7;
-  transform: scaleX(-1);
 }
 
 .ai-chat-markdown {
