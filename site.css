@@ -179,6 +179,16 @@ body {
 .site-footer a {
   color: #46613e;
   text-underline-offset: .18em;
+  transition: color .15s ease, transform .15s ease;
+}
+
+.site-footer a:hover {
+  color: #2d4427;
+  transform: translateY(-1px) scale(1.03);
+}
+
+.site-footer a:active {
+  transform: translateY(1px) scale(.99);
 }
 
 .site-footer a:last-child {
