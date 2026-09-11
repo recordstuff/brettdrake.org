@@ -13,12 +13,12 @@
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&amp;family=Literata:wght@400;600&amp;display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="../site.css">
-  <link rel="stylesheet" href="chat.css">
+  <link rel="stylesheet" href="chat.css?v=4">
   <script defer src="https://cdn.jsdelivr.net/npm/marked@18.0.11/lib/marked.umd.js"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/dompurify@3.4.14/dist/purify.min.js"></script>
   <script defer src="js/dialog.js"></script>
   <script defer src="js/modelselector.js"></script>
-  <script defer src="js/aichat.js"></script>
+  <script defer src="js/aichat.js?v=2"></script>
 </head>
 
 <body>
@@ -39,7 +39,7 @@
       </p>
     </div>
     <p class="ai-chat-status" id="aiChatStatusText" role="status">Ready</p>
-    <div class="ai-chat-messages" id="aiChatMessages" role="log" aria-label="Conversation" aria-live="polite" aria-relevant="additions" tabindex="0"></div>
+    <div class="ai-chat-messages" id="aiChatMessages" role="log" aria-label="Conversation" aria-live="polite" aria-relevant="additions"></div>
     <form id="aiChatForm" class="ai-chat-form">
       <label for="aiChatPrompt">Your message</label>
       <textarea id="aiChatPrompt" rows="3" required></textarea>
