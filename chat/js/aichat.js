@@ -14,7 +14,7 @@
   }
 
   function scrollAiChatToBottom() {
-    aiChatMessages.scrollTop = aiChatMessages.scrollHeight;
+    window.scrollTo(0, document.documentElement.scrollHeight);
   }
 
   function addAiChatMessage(role, text = "") {
