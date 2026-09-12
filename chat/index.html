@@ -13,12 +13,12 @@
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&amp;family=Literata:wght@400;600&amp;display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="../site.css">
-  <link rel="stylesheet" href="chat.css?v=5">
+  <link rel="stylesheet" href="chat.css?v=6">
   <script defer src="https://cdn.jsdelivr.net/npm/marked@18.0.11/lib/marked.umd.js"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/dompurify@3.4.14/dist/purify.min.js"></script>
   <script defer src="js/dialog.js"></script>
-  <script defer src="js/modelselector.js"></script>
-  <script defer src="js/aichat.js?v=3"></script>
+  <script defer src="js/modelselector.js?v=2"></script>
+  <script defer src="js/aichat.js?v=4"></script>
 </head>
 
 <body>
@@ -38,13 +38,13 @@
         <span id="aiChatModelStatusText">Loaded model: Checking…</span>
       </p>
     </div>
-    <p class="ai-chat-status" id="aiChatStatusText" role="status">Ready</p>
+    <p class="ai-chat-status" id="aiChatStatusText" role="status" data-state="checking">Checking…</p>
     <div class="ai-chat-messages" id="aiChatMessages" role="log" aria-label="Conversation" aria-live="polite" aria-relevant="additions"></div>
     <form id="aiChatForm" class="ai-chat-form">
       <label for="aiChatPrompt">Your message</label>
       <textarea id="aiChatPrompt" rows="3" required></textarea>
       <div class="ai-chat-actions">
-        <button class="button-blue" id="aiChatSendButton" type="submit">Send</button>
+        <button class="button-blue" id="aiChatSendButton" type="submit" disabled>Send</button>
         <button class="button-blue" id="aiChatStopButton" type="button" hidden>Stop</button>
       </div>
     </form>

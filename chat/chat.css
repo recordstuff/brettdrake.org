@@ -41,6 +41,28 @@ body {
   content: "";
 }
 
+.ai-chat-status[data-state="checking"],
+.ai-chat-status[data-state="loading"] {
+  border-color: #ead9a7;
+  background: #fff9e9;
+  color: #80651f;
+}
+
+.ai-chat-status[data-state="checking"]::before,
+.ai-chat-status[data-state="loading"]::before {
+  background: #c69b2d;
+}
+
+.ai-chat-status[data-state="error"] {
+  border-color: #e7ccc6;
+  background: #fff6f4;
+  color: #874b42;
+}
+
+.ai-chat-status[data-state="error"]::before {
+  background: #b5695d;
+}
+
 .paper-note.ai-chat {
   border-top: 0;
   border-bottom: 0;

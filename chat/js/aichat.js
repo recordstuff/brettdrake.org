@@ -10,6 +10,7 @@
   const aiChatStopButton = document.getElementById("aiChatStopButton");
   const aiChatStatusText = document.getElementById("aiChatStatusText");
   let activeRequest = null;
+  let modelAvailable = false;
 
   function updateComposerClearance() {
     const clearance = aiChatForm.getBoundingClientRect().height + 24;
@@ -22,6 +23,15 @@
 
   function setChatActive(isActive) {
     document.dispatchEvent(new CustomEvent("ai-chat-active", { detail: isActive }));
+  }
+
+  function setChatStatus(message, state) {
+    aiChatStatusText.textContent = message;
+    aiChatStatusText.dataset.state = state;
+  }
+
+  function updateSendButton() {
+    aiChatSendButton.disabled = Boolean(activeRequest) || !modelAvailable;
   }
 
   function scrollAiChatToBottom() {
@@ -62,10 +72,10 @@
     }
     const controller = new AbortController();
     activeRequest = controller;
-    aiChatSendButton.disabled = true;
+    updateSendButton();
     aiChatStopButton.hidden = false;
     setChatActive(true);
-    aiChatStatusText.textContent = "Thinking…";
+    setChatStatus("Thinking…", "busy");
     addAiChatMessage("user", prompt);
     aiChatPromptInput.value = "";
     const assistantMessage = addAiChatMessage("assistant");
@@ -112,7 +122,7 @@
         fullResponse = `${fullResponse}${decoder.decode(value, { stream: true })}`;
         if (fullResponse.trim()) {
           assistantMessage.bubble.textContent = fullResponse;
-          aiChatStatusText.textContent = "Replying…";
+          setChatStatus("Replying…", "busy");
           scrollAiChatToBottom();
         }
       }
@@ -120,7 +130,7 @@
         throw new Error("The model returned an empty reply.");
       }
       renderReply(assistantMessage.bubble, fullResponse);
-      aiChatStatusText.textContent = "Ready";
+      setChatStatus("Ready", "ready");
     } catch (error) {
       let message = "Unable to get a reply. Please try again.";
       if (controller.signal.aborted) {
@@ -131,7 +141,7 @@
       } else {
         console.error("Chat request failed.", error);
       }
-      aiChatStatusText.textContent = message;
+      setChatStatus(message, "error");
       if (fullResponse.trim()) {
         renderReply(assistantMessage.bubble, fullResponse);
       } else {
@@ -144,7 +154,7 @@
       }
       assistantMessage.wrapper.setAttribute("aria-busy", "false");
       activeRequest = null;
-      aiChatSendButton.disabled = false;
+      updateSendButton();
       aiChatStopButton.hidden = true;
       setChatActive(false);
       scrollAiChatToBottom();
@@ -166,5 +176,10 @@
     if (activeRequest) {
       activeRequest.abort();
     }
+  });
+  document.addEventListener("ai-chat-model-state", event => {
+    modelAvailable = Boolean(event.detail.isAvailable);
+    setChatStatus(event.detail.message, event.detail.state);
+    updateSendButton();
   });
 })();
