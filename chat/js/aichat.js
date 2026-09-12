@@ -1,13 +1,24 @@
 "use strict";
 
 (() => {
-  const endpoint = document.getElementById("aiChat").dataset.endpoint;
+  const aiChat = document.getElementById("aiChat");
+  const endpoint = aiChat.dataset.endpoint;
+  const aiChatForm = document.getElementById("aiChatForm");
   const aiChatPromptInput = document.getElementById("aiChatPrompt");
   const aiChatMessages = document.getElementById("aiChatMessages");
   const aiChatSendButton = document.getElementById("aiChatSendButton");
   const aiChatStopButton = document.getElementById("aiChatStopButton");
   const aiChatStatusText = document.getElementById("aiChatStatusText");
   let activeRequest = null;
+
+  function updateComposerClearance() {
+    const clearance = aiChatForm.getBoundingClientRect().height + 24;
+    aiChat.style.setProperty("--ai-chat-composer-clearance", `${clearance}px`);
+  }
+
+  const composerResizeObserver = new ResizeObserver(updateComposerClearance);
+  composerResizeObserver.observe(aiChatForm);
+  updateComposerClearance();
 
   function setChatActive(isActive) {
     document.dispatchEvent(new CustomEvent("ai-chat-active", { detail: isActive }));

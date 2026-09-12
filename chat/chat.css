@@ -10,7 +10,7 @@ body {
   min-height: 100vh;
   min-height: 100dvh;
   max-width: 1100px;
-  padding-bottom: 210px;
+  padding-bottom: var(--ai-chat-composer-clearance, 234px);
 }
 
 .chat-back-link {
