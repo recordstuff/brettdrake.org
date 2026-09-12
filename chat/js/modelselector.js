@@ -2,8 +2,6 @@
 
 (() => {
   const endpoint = document.getElementById("aiChat").dataset.endpoint;
-  const aiChatSendButton = document.getElementById("aiChatSendButton");
-  const aiChatStatusText = document.getElementById("aiChatStatusText");
   const aiChatModelSelect = document.getElementById("aiChatModelSelect");
   const aiChatChangeModelButton = document.getElementById("aiChatChangeModelButton");
   const aiChatModelStatus = document.getElementById("aiChatModelStatus");
@@ -18,6 +16,12 @@
     aiChatModelStatusText.textContent = message;
     aiChatModelStatus.dataset.state = state;
     modelLoadingSpinner.hidden = !isLoading;
+  }
+
+  function setChatAvailability(message, state, isAvailable) {
+    document.dispatchEvent(new CustomEvent("ai-chat-model-state", {
+      detail: { message, state, isAvailable }
+    }));
   }
 
   function updateChangeModelButton() {
@@ -41,6 +45,7 @@
     aiChatModelSelect.disabled = true;
     aiChatChangeModelButton.disabled = true;
     setModelStatus("Loaded model: Checking…", "checking", true);
+    setChatAvailability("Checking…", "checking", false);
 
     try {
       const modelsResponse = await fetch(`${endpoint}/availablemodels`, {
@@ -62,6 +67,7 @@
 
       if (!availableModels.length) {
         setModelStatus("Loaded model: No language models are available.", "error");
+        setChatAvailability("No models available", "error", false);
         return;
       }
 
@@ -75,15 +81,23 @@
       loadedModelKey = "";
       if (loadedResponse.ok) {
         loadedModelKey = (await loadedResponse.text()).trim();
-        aiChatModelSelect.value = loadedModelKey;
-        setModelStatus(`Loaded model: ${loadedModelKey}`, "loaded");
+        if (loadedModelKey) {
+          aiChatModelSelect.value = loadedModelKey;
+          setModelStatus(`Loaded model: ${loadedModelKey}`, "loaded");
+          setChatAvailability("Ready", "ready", true);
+        } else {
+          setModelStatus("No model is loaded", "checking");
+          setChatAvailability("No model loaded", "checking", false);
+        }
       } else {
         setModelStatus("No model is loaded", "checking");
+        setChatAvailability("No model loaded", "checking", false);
       }
 
       updateChangeModelButton();
     } catch (error) {
       setModelStatus("Loaded model: Unable to determine", "error");
+      setChatAvailability("Unable to determine", "error", true);
       console.error("Chat model information is unavailable.", error);
     } finally {
       clearTimeout(timer);
@@ -95,9 +109,9 @@
     const selectedModelKey = aiChatModelSelect.value;
     modelChangeInProgress = true;
     aiChatModelSelect.disabled = true;
-    aiChatSendButton.disabled = true;
     updateChangeModelButton();
     setModelStatus(`Loading model: ${selectedModelKey}…`, "loading", true);
+    setChatAvailability("Chat paused", "loading", false);
 
     try {
       const response = await fetch(`${endpoint}/loadedmodel`, {
@@ -113,8 +127,8 @@
       loadedModelKey = (await response.text()).trim();
       aiChatModelSelect.value = loadedModelKey;
       setModelStatus(`Loaded model: ${loadedModelKey}`, "loaded");
+      setChatAvailability("Ready", "ready", true);
     } catch (error) {
-      aiChatStatusText.textContent = "Unable to change the language model.";
       console.error("Unable to change the language model.", error);
       await loadModelOptions();
     } finally {
@@ -124,7 +138,6 @@
       } else {
         aiChatModelSelect.disabled = true;
       }
-      aiChatSendButton.disabled = false;
       modelLoadingSpinner.hidden = true;
       updateChangeModelButton();
     }
